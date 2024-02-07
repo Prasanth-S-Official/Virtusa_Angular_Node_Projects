@@ -1,13 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { ErrorComponent } from './error/error.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { ErrorComponent } from './components/error/error.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,16 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
     RegistrationComponent,
     ErrorComponent,
     AdminDashboardComponent,
-    EmployeeDashboardComponent
+    EmployeeDashboardComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
