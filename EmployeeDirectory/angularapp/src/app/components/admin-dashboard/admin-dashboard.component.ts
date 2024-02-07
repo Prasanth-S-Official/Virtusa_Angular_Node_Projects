@@ -21,7 +21,7 @@ export class AdminDashboardComponent implements OnInit {
     private employeeService: EmployeeService
   ) {}
 
-  navigateToAddEvent() {
+  navigateToAddEmployee() {
     this.router.navigate(['/add-event']);
   }
   logout() {
@@ -35,38 +35,38 @@ export class AdminDashboardComponent implements OnInit {
     window.location.href = '/login';
   }
 
-  events: any[] = []; // Declare the 'vacationRentals' property as an array of any type
+  employees: any[] = []; // Declare the 'vacationRentals' property as an array of any type
 
   ngOnInit(): void {
     // when add vacationRental button is clicked, trigger this function getBooksByUserId()
-    this.getEventManagementsByUserId();
+    this.getEmployeesByUserId();
   }
 
-  navigateToEditEvent(eventId: { eventId: number }) {
-    console.log('Event Id to be edited', eventId);
-    this.router.navigate(['/edit-event', eventId.eventId]);
+  navigateToEditEvent(employeeId: { employeeId: number }) {
+    console.log('Employee Id to be edited', employeeId);
+    this.router.navigate(['/edit-event', employeeId.employeeId]);
   }
 
-  getEventManagementsByUserId() {
-    this.employeeService.getEventManagementsByUserId().subscribe(
+  getEmployeesByUserId() {
+    this.employeeService.getEmployeesByUserId().subscribe(
       (data) => {
         console.log(data);
-        this.events = data;
+        this.employees = data;
       },
       (error) => {
-        console.error('Error retrieving events', error);
+        console.error('Error retrieving employees', error);
       }
     );
   }
 
-  deleteEventManagement(eventId: string) {
-    this.employeeService.deleteEventManagement(eventId).subscribe(
+  deleteEmployee(employeeId: string) {
+    this.employeeService.deleteEmployee(employeeId).subscribe(
       (response) => {
-        console.log('Event deleted successfully', response);
-        this.getEventManagementsByUserId();
+        console.log('Employee deleted successfully', response);
+        this.getEmployeesByUserId();
       },
       (error) => {
-        console.error('Error deleting event', error);
+        console.error('Error deleting employee', error);
       }
     );
   }
@@ -83,11 +83,11 @@ export class AdminDashboardComponent implements OnInit {
 
   searchText: string = ''; // Declare the 'searchText' property as a string
   sortValue: string = ''; // Declare the 'sortValue' property as a string
-  searchEventManagementsByUserId() {
+  searchEmployeesByUserId() {
     this.employeeService
-      .searchEventManagementsByUserId(this.searchText)
+      .searchEmployeesByUserId(this.searchText)
       .subscribe((event) => {
-        this.events = event;
+        this.employees = event;
       });
   }
 }
