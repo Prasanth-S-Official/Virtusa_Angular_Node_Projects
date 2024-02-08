@@ -15,7 +15,7 @@ export class RegistrationComponent {
   user: User
   errorMessage = ''
 
-  roles = ['Organiser', 'Participant'];
+  roles = ['Admin', 'Patient'];
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registrationForm = this.fb.group({

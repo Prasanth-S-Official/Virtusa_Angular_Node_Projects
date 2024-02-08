@@ -33,10 +33,10 @@ export class LoginComponent {
           localStorage.setItem('token', response.token);
           localStorage.setItem('userId', response.userId);
           localStorage.setItem('userRole', response.role);
-          if(response.role=='Organiser'){
-            this.router.navigate(['/organiser-dashboard']);
-          }else if(response.role=='Participant'){
-            this.router.navigate(['/participant-dashboard']);
+          if(response.role=='Admin'){
+            this.router.navigate(['/admin-dashboard']);
+          }else if(response.role=='Patient'){
+            this.router.navigate(['/patient-dashboard']);
           }
         else{
           this.errorMessage = 'Invalid credentials';
