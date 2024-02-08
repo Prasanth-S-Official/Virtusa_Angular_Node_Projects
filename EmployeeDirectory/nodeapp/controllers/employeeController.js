@@ -9,7 +9,7 @@ const getAllEmployees = async (req, res) => {
     const employees = await Employee.find({firstName : searchRegex}).select('-_id -__v')
     .sort({experience : parseInt(sortValue)});
     // console.log("employees",employees);
-    res.status(200).json({"data":employees});
+    res.status(200).json(employees);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

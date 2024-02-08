@@ -7,10 +7,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./employee-dashboard.component.css']
 })
 export class EmployeeDashboardComponent implements OnInit {
-
-  
   showDeletePopup = false;
-  selectedEmployee: Event; 
   showLogoutPopup = false;
   selectedItem: any = {};
   showModal: boolean = false;

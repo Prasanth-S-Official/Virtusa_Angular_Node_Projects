@@ -11,12 +11,12 @@ import { EventmanagementService } from 'src/app/services/eventmanagement.service
 export class ParticipantDashboardComponent implements OnInit {
 
   showDeletePopup = false;
-  selectedEvent: Event; 
+  selectedEvent: Event;
   showLogoutPopup = false;
   selectedItem: any = {};
   showModal: boolean = false;
-  
-  constructor(private eventManagementService: EventmanagementService ) { }
+
+  constructor(private eventManagementService: EventmanagementService) { }
 
   logout() {
     // Perform logout logic here
@@ -31,56 +31,56 @@ export class ParticipantDashboardComponent implements OnInit {
 
   events: any[] = []; // Declare the 'vacationRentals' property as an array of any type
 
-ngOnInit(): void {
-  // when add vacationRental button is clicked, trigger this function getBooksByUserId()
-  this.getAllEventManagement();
-}
+  ngOnInit(): void {
+    // when add vacationRental button is clicked, trigger this function getBooksByUserId()
+    this.getAllEventManagement();
+  }
 
-getAllEventManagement() {
-  this.eventManagementService.getAllEventManagement().subscribe(
-    (data) => {
-      console.log(data);
-      this.events = data;
-    },
-    (error) => {
-      console.error('Error retrieving vacationRentals', error);
-    }
-  );
-}
+  getAllEventManagement() {
+    this.eventManagementService.getAllEventManagement().subscribe(
+      (data) => {
+        console.log(data);
+        this.events = data;
+      },
+      (error) => {
+        console.error('Error retrieving vacationRentals', error);
+      }
+    );
+  }
 
-viewInfo(vacationRental: any) {
-  this.selectedItem = vacationRental;
-  this.eventManagementService.getAllUsers().subscribe(users => {
-    const user = users.find(user => user.userId === this.selectedItem.userId);
-    if (user) {
-      this.selectedItem.firstName = user.firstName;
-      this.selectedItem.lastName = user.lastName;
-      this.selectedItem.email = user.email;
-      this.selectedItem.mobileNumber = user.mobileNumber;
-    }
-    console.log(this.selectedItem);
-  });
-  this.toggleModal();
-}
+  viewInfo(vacationRental: any) {
+    this.selectedItem = vacationRental;
+    this.eventManagementService.getAllUsers().subscribe(users => {
+      const user = users.find(user => user.userId === this.selectedItem.userId);
+      if (user) {
+        this.selectedItem.firstName = user.firstName;
+        this.selectedItem.lastName = user.lastName;
+        this.selectedItem.email = user.email;
+        this.selectedItem.mobileNumber = user.mobileNumber;
+      }
+      console.log(this.selectedItem);
+    });
+    this.toggleModal();
+  }
 
-toggleModal() {
-  this.showModal = !this.showModal;
-}
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
 
-searchText: string = ''; // Declare the 'searchText' property as a string
-sortValue: string = ''; // Declare the 'sortValue' property as a string
-searchEventManagements() {
-  this.eventManagementService.searchEventManagements(this.searchText).subscribe(eventResponse => {
-    this.events = eventResponse;
-  });
-}
+  searchText: string = ''; // Declare the 'searchText' property as a string
+  sortValue: string = ''; // Declare the 'sortValue' property as a string
+  searchEventManagements() {
+    this.eventManagementService.searchEventManagements(this.searchText).subscribe(eventResponse => {
+      this.events = eventResponse;
+    });
+  }
 
-sortEventManagements() {
-  this.eventManagementService.sortEventManagements(this.sortValue).subscribe(eventResponse => {
-    this.events = eventResponse;
-  });
+  sortEventManagements() {
+    this.eventManagementService.sortEventManagements(this.sortValue).subscribe(eventResponse => {
+      this.events = eventResponse;
+    });
 
 
-}
+  }
 
 }
