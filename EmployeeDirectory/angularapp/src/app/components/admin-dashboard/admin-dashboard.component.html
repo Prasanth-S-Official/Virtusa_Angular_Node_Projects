@@ -23,56 +23,14 @@
     />
   </div>
 
-  <!-- <table class="table">
-        <thead>
-          <tr>
-            <th>Photo</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Rental Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let vacationRental of vacationRentals">
-            <td>
-              <img
-                src="{{ vacationRental.photo }}"
-                alt="Book Image"
-                style="height: 100px; width: 100px; border:1px solid black; border-radius: 5px;"
-              />
-            </td>
-            <td>{{ vacationRental.title }}</td>
-            <td>{{ vacationRental.description }}</td>
-            <td>{{ vacationRental.pricePerDay }}</td>
-            <td>
-              <div class="buttons"><button
-                class="edit-btn-grad btn-primary"
-                (click)="navigateToEditBook(vacationRental)"
-              >
-                Edit
-              </button>
-              <button
-                class="delete-btn-grad btn-danger"
-                (click)="showDeletePopup = true; selectedBook = vacationRental"
-              >
-                Delete
-              </button>
-            </div><hr class="hr"/>
-              
-              <button class="view-btn-grad" (click)="viewInfo(vacationRental)">View Info</button>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
-
   <div class="grid-container">
     <div class="grid-item" *ngFor="let employee of employees">
-      <img src="{{ employee.coverImage }}" alt="Book Image" class="vacationRental-image" />
+      <img src="{{ employee.photo }}" alt="Book Image" class="vacationRental-image" />
       <div (click)="viewInfo(employee)">
-      <h2>{{ employee.title }}</h2>
-      <p>{{ employee.description }}</p>
-      <p>Start Date: {{ employee.startDate | date:'yyyy-MM-dd'}}</p>
+      <h2>{{ employee.firstName }}</h2>
+      <p>Email: {{ employee.mailId }}</p>
+      <p>Education: {{ employee.education}}</p>
+      <p>Experience: {{ employee.experience}}</p>
     </div>
       <div class="buttons">
         <button
