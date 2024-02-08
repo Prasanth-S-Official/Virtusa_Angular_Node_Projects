@@ -9,7 +9,7 @@ const doctorSchema = new mongoose.Schema({
   },
   doctorId: {
     type: mongoose.Schema.Types.ObjectId,
-    default: new mongoose.Types.ObjectId, // Auto-generate ObjectId 
+    default:()=> new mongoose.Types.ObjectId, // Auto-generate ObjectId 
     unique: true,
   },
   firstName: { 
