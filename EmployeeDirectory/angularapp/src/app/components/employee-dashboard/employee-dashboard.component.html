@@ -33,9 +33,9 @@
           alt="Employee Image"
           class="vacationRental-image"
         />
-        <div (click)="viewInfo(employee)">
-          <h2>{{ employee.fisrtName }}</h2>
-          <p>{{ employee.position }}</p>
+        <div (click)="viewInfo(selectedEmployee)">
+          <h2>{{ employee.firstName }}</h2>
+          <p>{{ employee.age }}</p>
           <p>Start Date: {{ employee.startDate | date:'yyyy-MM-dd'}}</p>
         </div>
       </div>

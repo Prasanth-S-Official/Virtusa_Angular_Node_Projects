@@ -10,7 +10,7 @@ export class EmployeeDashboardComponent implements OnInit {
 
   
   showDeletePopup = false;
-  selectedEvent: Event; 
+  selectedEmployee: Event; 
   showLogoutPopup = false;
   selectedItem: any = {};
   showModal: boolean = false;
