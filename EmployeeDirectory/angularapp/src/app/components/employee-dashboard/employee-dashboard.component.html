@@ -4,7 +4,7 @@
         Logout
       </button>
     </div>
-    <h1>All Employees</h1>
+    <h1>Available Employees</h1>
   
     <div class="search-sort-container">
       <input
@@ -14,14 +14,14 @@
         placeholder="Search by employee name..."
       />
       <div>
-        <label for="sort">Sort by Start Date:</label>
+        <label for="sort">Sort by Experience:</label>
         <select
           [(ngModel)]="sortValue"
           (change)="sortEmployees()"
           class="sort-select">
             <option value="">Select</option>
-          <option value="1">Date Ascending</option>
-          <option value="-1">Date Descending</option>    
+          <option value="1">Ascending</option>
+          <option value="-1">Descending</option>    
         </select>
       </div>
     </div>
@@ -73,7 +73,9 @@
       <span class="close" (click)="toggleModal()">&times;</span>
       <h2>Employee Details</h2>
       <div class="image-container">
-        <p><strong>Employee name:</strong> {{ selectedItem.firstName }}  {{ selectedItem.lastName }}</p>
+        <img src="{{ selectedItem.photo }}" alt="Employee Image" class="employee-image" />
+        <div>
+          <p><strong>Employee name:</strong> {{ selectedItem.firstName }}  {{ selectedItem.lastName }}</p>
         <p><strong>Experience:</strong> {{ selectedItem.experience }}</p>
         <p><strong>Mobile Number:</strong> {{ selectedItem.mobileNumber}}</p>
         <p><strong>Education:</strong> {{ selectedItem.education}}</p>
@@ -84,6 +86,8 @@
         </p>
         <p><strong>Contact Email: </strong>{{ selectedItem.mailId }}</p>
         <p><strong>Contact Phone:</strong> {{ selectedItem.mobileNumber }}</p>
+        </div>
+        
       </div>
     </div>
   </div>
