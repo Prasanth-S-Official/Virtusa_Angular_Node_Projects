@@ -1,103 +1,89 @@
 <div class="main-container">
-    <div class="sub-container">
-      <button class="back-btn" (click)="goBack()">Back</button>
-  
-      <h1>Update Event</h1>
-  
-      <form *ngIf="employee">
-        <div class="form-group">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" [(ngModel)]="employee.firstName" />
-          </div>
-    
-          <div class="form-group">
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" [(ngModel)]="employee.lastName" />
-          </div>
-    
-          <div class="form-group">
-            <label for="mobileNumber">Mobile Number:</label>
-            <input type="text" id="mobileNumber" name="mobileNumber" [(ngModel)]="employee.mobileNumber" />
-            <div *ngIf="employeeForm.get('mobileNumber').hasError('required') && employeeForm.get('mobileNumber').touched">
-              *Mobile number is required.
-            </div>
-            <div *ngIf="employeeForm.get('mobileNumber').hasError('pattern') && employeeForm.get('mobileNumber').touched">
-              *Please enter a valid 10-digit number.
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="mailId">Email:</label>
-            <input type="text" id="mailId" name="mailId" [(ngModel)]="employee.mailId" />
-            <div *ngIf="employeeForm.get('mailId').hasError('required') && employeeForm.get('mailId').touched">
-              *Email is required.
-            </div>
-            <div *ngIf="employeeForm.get('mailId').hasError('pattern') && employeeForm.get('mailId').touched">
-              *Enter a valid email address.
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="dateOfBirth">Date of Birth:</label>
-            <input type="text" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" />
-            <div *ngIf="employeeForm.get('dateOfBirth').hasError('required') && employeeForm.get('dateOfBirth').touched">
-              *Date of birth is required.
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="age">Age:</label>
-            <input type="text" id="age" name="age" [(ngModel)]="employee.age" />
-            <div *ngIf="employeeForm.get('age').hasError('required') && employeeForm.get('age').touched">
-              *Age is required.
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="gender">Gender:</label>
-            <select
-              id="gender"
-              name="gender"
-              [(ngModel)]="employee.gender"
-            >
-              <option value="">Select</option>
-              <option *ngFor="let type of genders" [value]="type">
-                {{ type }}
-              </option>
-            </select>
-          </div>
-    
-          <div class="form-group">
-            <label for="education">Education:</label>
-            <input type="text" id="education" name="education" [(ngModel)]="employee.education" />
-            <div *ngIf="employeeForm.get('education').hasError('required') && employeeForm.get('education').touched">
-              *Education is required.
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="experience">Experience:</label>
-            <input type="text" id="experience" name="experience" [(ngModel)]="employee.experience" />
-            <div *ngIf="employeeForm.get('experience').hasError('required') && employeeForm.get('experience').touched">
-              *Experience is required.
-            </div>
-          </div>
+  <div class="sub-container">
+    <button class="back-btn" (click)="goBack()">Back</button>
 
-          <div class="form-group">
-            <label for="photo">Photo:</label>
-            <input
-              type="file"
-              id="photo"
-              name="photo"
-              (change)="handleFileChange($event)"
-              accept=".png, .jpg"
-            />
-          </div>
-    
-          <div class="button-submit">
-            <button type="submit" (click)="updateEmployee()">Update Event</button>
-          </div>
-        </form>
-    </div>
+    <h1>Update Employee</h1>
+
+    <form *ngIf="employee">
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" [(ngModel)]="employee.firstName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" [(ngModel)]="employee.lastName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber" name="mobileNumber" [(ngModel)]="employee.mobileNumber" required pattern="^\d{10}$" />
+      </div>
+
+      <div class="form-group">
+        <label for="mailId">Email:</label>
+        <input type="text" id="mailId" name="mailId" [(ngModel)]="employee.mailId" required pattern="^[a-z]+@[a-z]+\.[a-z]+$" />
+      </div>
+
+      <div class="form-group">
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="text" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" required />
+        <div *ngIf="!employee.dateOfBirth && touched">
+          *Date of birth is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" [(ngModel)]="employee.age" required />
+        <div *ngIf="!employee.age && touched">
+          *Age is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" [(ngModel)]="employee.gender" required>
+          <option value="">Select</option>
+          <option *ngFor="let type of genders" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+        <div *ngIf="!employee.gender && touched">
+          *Gender is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="education">Education:</label>
+        <input type="text" id="education" name="education" [(ngModel)]="employee.education" required />
+        <div *ngIf="!employee.education && touched">
+          *Education is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="experience">Experience:</label>
+        <input type="text" id="experience" name="experience" [(ngModel)]="employee.experience" required />
+        <div *ngIf="!employee.experience && touched">
+          *Experience is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Photo:</label>
+        <input
+          type="file"
+          id="photo"
+          name="photo"
+          (change)="handleFileChange($event)"
+          accept=".png, .jpg"
+        />
+      </div>
+
+      <div class="button-submit">
+        <button type="submit" (click)="updateEmployee()">Update Employee</button>
+      </div>
+    </form>
   </div>
-  
+</div>

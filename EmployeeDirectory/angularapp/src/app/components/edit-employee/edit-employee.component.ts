@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Validators
 
 
 @Component({
@@ -10,22 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import V
   styleUrls: ['./edit-employee.component.css']
 })
 export class EditEmployeeComponent implements OnInit {
-  employeeForm: FormGroup;
   employee: any = {};
   photoImage="";
-  constructor(private route: ActivatedRoute,private fb: FormBuilder, private employeeService: EmployeeService, private router: Router) {
-    this.employeeForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      mailId: ['', [Validators.required, Validators.pattern(/^[a-z]+@[a-z]+\.[a-z]+$/)]],
-      dateOfBirth: ['', Validators.required],
-      age: ['', Validators.required],
-      gender: ['', Validators.required],
-      education: ['', Validators.required],
-      experience: ['', Validators.required],
-      photo: [null, Validators.required],
-    });
+  constructor(private route: ActivatedRoute, private employeeService: EmployeeService, private router: Router) {
   }
   genders = ['Male', 'Female'];
 
@@ -56,7 +42,7 @@ getFormattedDate(dateString: string): string {
   }
 
   updateEmployee() {
-    if (this.employeeForm.valid) {
+    // if (this.employeeForm.valid) {
     this.employee.coverImage=this.photoImage;
     this.employeeService.updateEmployee(this.employee).subscribe(
       (response) => {
@@ -67,10 +53,7 @@ getFormattedDate(dateString: string): string {
       (error) => {
         console.error('Error updating employee', error);
       }
-    );}else{
-      console.error('Form is not valid. Cannot update employee.');
-
-    }
+    );
  }
 
  
