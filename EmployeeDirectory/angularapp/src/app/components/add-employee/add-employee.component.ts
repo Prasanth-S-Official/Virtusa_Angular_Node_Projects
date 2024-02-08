@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { Employee } from 'src/app/models/employee.model';
 
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css']
 })
-export class AddEmployeeComponent implements OnInit {
+export class AddEmployeeComponent {
 
   eventForm: FormGroup;
-  event: Event
+  employee: Employee
   photoImage="";
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private eventManagementService: EventmanagementService, private route:Router) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private route:Router) {
     this.eventForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -34,19 +36,19 @@ export class AddEmployeeComponent implements OnInit {
       console.log(this.eventForm.value);
       //pass userid from local storage
       // this.eventForm.value.userId=localStorage.getItem('userId');
-      this.event = new Event();
-      this.event.title = this.eventForm.get('title').value;
-      this.event.category = this.eventForm.get('category').value;
-      this.event.description = this.eventForm.get('description').value;
-      this.event.startDate = this.eventForm.get('startDate').value;
-      this.event.location = this.eventForm.get('location').value;
-      this.event.endDate = this.eventForm.get('endDate').value;
-      this.event.coverImage = this.photoImage;
-      this.event.userId = localStorage.getItem('userId');
-      this.eventManagementService.addEventManagement(this.event).subscribe(
+      this.employee = new Employee();
+      this.employee.firstName = this.eventForm.get('title').value;
+      this.employee.category = this.eventForm.get('category').value;
+      this.employee.description = this.eventForm.get('description').value;
+      this.employee.startDate = this.eventForm.get('startDate').value;
+      this.employee.location = this.eventForm.get('location').value;
+      this.employee.endDate = this.eventForm.get('endDate').value;
+      this.employee.coverImage = this.photoImage;
+      this.employee.userId = localStorage.getItem('userId');
+      this.eventManagementService.addEventManagement(this.employee).subscribe(
         (response) => {
           // Handle success if needed
-          console.log('event added successfully', response);
+          console.log('employee added successfully', response);
           this.eventForm.reset(); // Reset the form
           this.route.navigate(['/organiser-dashboard']);
         },
@@ -60,8 +62,8 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
-  handleFileChange(event: any): void {
-    const file = event.target.files[0];
+  handleFileChange(employee: any): void {
+    const file = employee.target.files[0];
 
     if (file) {
       this.convertFileToBase64(file).then(
