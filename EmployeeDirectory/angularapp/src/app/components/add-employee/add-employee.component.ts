@@ -18,13 +18,16 @@ export class AddEmployeeComponent {
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private route:Router) {
     this.employeeForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      category: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      location: ['', Validators.required],
-      coverImage: [null, Validators.required],
+      firstName: ['', Validators.required],
+  lastName: ['', Validators.required],
+  mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+  mailId: ['', [Validators.required, Validators.pattern(/^[a-z]+@[a-z]+\.[a-z]+$/)]],
+  dateOfBirth: ['', Validators.required],
+  age: ['', Validators.required],
+  gender: ['', Validators.required],
+  education: ['', Validators.required],
+  experience: ['', Validators.required],
+  photo: [null, Validators.required],
     });
   }
 
