@@ -1,1 +1,95 @@
-<p>admin-dashboard works!</p>
+<div
+  id="eventHomeBody"
+  [ngClass]="{ blur: showDeletePopup || showLogoutPopup }"
+>
+  <!-- <div class="main-head"> -->
+  <div class="top-head">
+    <button class="logout-btn-grad" (click)="showLogoutPopup = true">
+      Logout
+    </button>
+    <button class="add-btn-grad" (click)="navigateToAddEmployee()">
+        Add new Employee
+      </button>
+  </div>
+  <h1>Our Employees</h1>
+
+  <!-- </div> -->
+  <div class="search-sort-container">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (input)="searchEmployeesByUserId()"
+      placeholder="Search by employee name..."
+    />
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item" *ngFor="let employee of employees">
+      <img src="{{ employee.photo }}" alt="Employee Image" class="employee-image" />
+        <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+        <p>Email: {{ employee.mailId }}</p>
+      <p>Education: {{ employee.education}}</p>
+      <p>Experience: {{ employee.experience}}</p>
+      <div class="buttons">
+        <button
+          class="view-btn-grad"
+          (click)="viewInfo(employee)"
+        >
+          View
+        </button>
+        <button
+          class="edit-btn-grad"
+          (click)="navigateToEditEmployee(employee); $event.stopPropagation()"
+        >
+          Edit
+        </button>
+        <button
+          class="delete-btn-grad btn-danger"
+          (click)="
+            showDeletePopup = true;
+            selectedEmployee = employee;
+            $event.stopPropagation()
+          "
+        >
+          Delete
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showDeletePopup" class="delete-popup">
+  <p>Are you sure you want to delete?</p>
+  <button
+    (click)="deleteEmployee(selectedEmployee); showDeletePopup = false"
+    id="delete-btn"
+  >
+    Yes, Delete
+  </button>
+  <button (click)="showDeletePopup = false">Cancel</button>
+</div>
+
+<div *ngIf="showLogoutPopup" class="logout-popup">
+  <p>Are you sure you want to logout?</p>
+  <button (click)="logout(); showLogoutPopup = false" id="logout-btn">
+    Yes, Logout
+  </button>
+  <button (click)="showLogoutPopup = false">Cancel</button>
+</div>
+
+<div class="modal" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
+  <div class="modal-content">
+    <span class="close" (click)="toggleModal()">&times;</span>
+    <h2>{{ selectedItem.firstName }} {{ selectedItem.lastName }}</h2>
+    <div class="image-container">
+      <p><strong>Email:</strong> {{ selectedItem.mailId }}</p>
+      <p><strong>Mobile Number:</strong> {{ selectedItem.mobileNumber }}</p>
+      <p><strong>Date of Birth:</strong> {{ selectedItem.dateOfBirth | date:'yyyy-MM-dd'}}</p>
+      <p><strong>Age:</strong> {{ selectedItem.age }}</p>
+      <p><strong>Gender:</strong> {{ selectedItem.gender }}</p>
+      <p><strong>Education:</strong> {{ selectedItem.education }}</p>
+      <p><strong>Experience:</strong> {{ selectedItem.experience }}</p>
+    </div>
+  </div>
+</div>
