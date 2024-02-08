@@ -17,7 +17,7 @@ export class EditEmployeeComponent implements OnInit {
 
   ngOnInit() {
     const employeeId = this.route.snapshot.paramMap.get('id');
-    console.log('Event Ids to be edited', employeeId);
+    console.log('Employee Id to be edited', employeeId);
     this.getEmployeeById(employeeId);
   }
 
