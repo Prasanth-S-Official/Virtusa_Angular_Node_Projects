@@ -1,81 +1,73 @@
 <div id="vacationRentalHomeBody" [ngClass]="{ blur: showDeletePopup || showLogoutPopup }">
-    <div class="top-head">
-      <button class="logout-btn-grad" (click)="showLogoutPopup = true">
-        Logout
-      </button>
-    </div>
-    <h1>Available Employees</h1>
-  
-    <div class="search-sort-container">
-      <input
-        type="text"
-        [(ngModel)]="searchText"
-        (input)="searchEmployees()"
-        placeholder="Search by employee name..."
-      />
-      <div>
-        <label for="sort">Sort by Experience:</label>
-        <select
-          [(ngModel)]="sortValue"
-          (change)="sortEmployees()"
-          class="sort-select">
-            <option value="">Select</option>
-          <option value="1">Ascending</option>
-          <option value="-1">Descending</option>    
-        </select>
-      </div>
-    </div>
-  
-    <table class="employee-table">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Mobile Number</th>
-          <th>Mail Id</th>
-          <th>Date of Birth</th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>Education</th>
-          <th>Experience</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees">
-          <td>{{ employee.firstName }}</td>
-          <td>{{ employee.lastName }}</td>
-          <td>{{ employee.mobileNumber }}</td>
-          <td>{{ employee.mailId }}</td>
-          <td>{{ employee.dateOfBirth | date:'yyyy-MM-dd' }}</td>
-          <td>{{ employee.age }}</td>
-          <td>{{ employee.gender }}</td>
-          <td>{{ employee.education }}</td>
-          <td>{{ employee.experience }}</td>
-          <td>
-            <button (click)="viewInfo(employee)">View Info</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div *ngIf="showLogoutPopup" class="logout-popup">
-    <p>Are you sure you want to logout?</p>
-    <button (click)="logout(); showLogoutPopup = false" id="logout-btn">
-      Yes, Logout
+  <div class="top-head">
+    <button class="logout-btn-grad" (click)="showLogoutPopup = true">
+      Logout
     </button>
-    <button (click)="showLogoutPopup = false">Cancel</button>
   </div>
-  
-  <div class="modal" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
-    <div class="modal-content">
-      <span class="close" (click)="toggleModal()">&times;</span>
-      <h2>Employee Details</h2>
-      <div class="image-container">
-        <img src="{{ selectedItem.photo }}" alt="Employee Image" class="employee-image" />
-        <div>
-          <p><strong>Employee name:</strong> {{ selectedItem.firstName }}  {{ selectedItem.lastName }}</p>
+  <h1>Available Employees</h1>
+
+  <div class="search-sort-container">
+    <input type="text" [(ngModel)]="searchText" (input)="searchEmployees()" placeholder="Search by employee name..." />
+    <div>
+      <label for="sort">Sort by Experience:</label>
+      <select [(ngModel)]="sortValue" (change)="sortEmployees()" class="sort-select">
+        <option value="">Select</option>
+        <option value="1">Ascending</option>
+        <option value="-1">Descending</option>
+      </select>
+    </div>
+  </div>
+
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Mobile Number</th>
+        <th>Mail Id</th>
+        <th>Date of Birth</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Education</th>
+        <th>Experience</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.mobileNumber }}</td>
+        <td>{{ employee.mailId }}</td>
+        <td>{{ employee.dateOfBirth | date:'yyyy-MM-dd' }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.gender }}</td>
+        <td>{{ employee.education }}</td>
+        <td>{{ employee.experience }}</td>
+        <td>
+          <button (click)="viewInfo(employee)">View Info</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="showLogoutPopup" class="logout-popup">
+  <p>Are you sure you want to logout?</p>
+  <button (click)="logout(); showLogoutPopup = false" id="logout-btn">
+    Yes, Logout
+  </button>
+  <button (click)="showLogoutPopup = false">Cancel</button>
+</div>
+
+<div class="modal" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
+  <div class="modal-content">
+    <span class="close" (click)="toggleModal()">&times;</span>
+    <h2>Employee Details</h2>
+    <div class="image-container">
+      <img src="{{ selectedItem.photo }}" alt="Employee Image" class="employee-image" />
+      <div>
+        <p><strong>Employee name:</strong> {{ selectedItem.firstName }} {{ selectedItem.lastName }}</p>
         <p><strong>Experience:</strong> {{ selectedItem.experience }}</p>
         <p><strong>Mobile Number:</strong> {{ selectedItem.mobileNumber}}</p>
         <p><strong>Education:</strong> {{ selectedItem.education}}</p>
@@ -86,9 +78,8 @@
         </p>
         <p><strong>Contact Email: </strong>{{ selectedItem.mailId }}</p>
         <p><strong>Contact Phone:</strong> {{ selectedItem.mobileNumber }}</p>
-        </div>
-        
       </div>
+
     </div>
   </div>
-  
+</div>
