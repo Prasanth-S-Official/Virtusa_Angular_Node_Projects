@@ -28,7 +28,7 @@ export class AddEmployeeComponent {
     });
   }
 
-  categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
+  genders = ['Male', 'Female'];
 
   onSubmit() {
     if (this.employeeForm.valid) {
@@ -51,7 +51,7 @@ export class AddEmployeeComponent {
       this.employeeService.addEmployee(this.employee).subscribe(
         (response) => {
           // Handle success if needed
-          console.log('employee added successfully', response);
+          console.log('Employee added successfully', response);
           this.employeeForm.reset(); // Reset the form
           this.route.navigate(['/admin-dashboard']);
         },
