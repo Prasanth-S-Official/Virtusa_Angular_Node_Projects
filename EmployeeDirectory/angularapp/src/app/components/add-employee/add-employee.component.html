@@ -28,6 +28,9 @@
         <div *ngIf="employeeForm.get('mobileNumber').hasError('required') && employeeForm.get('mobileNumber').touched">
           *Mobile number is required.
         </div>
+        <div *ngIf="employeeForm.get('mobileNumber').hasError('pattern') && employeeForm.get('mobileNumber').touched">
+            *Please enter a valid 10-digit number.
+          </div>
       </div>
       
       <div class="form-group">
@@ -56,6 +59,17 @@
           *Age is required.
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" formControlName="gender">
+            <option value="">Select</option>
+            <option *ngFor="let type of genders" [value]="type">{{type}}</option>
+        </select>
+        <div *ngIf="employeeForm.get('gender').hasError('required') && employeeForm.get('gender').touched">
+            *Gender is required.
+        </div>
+    </div>
       
       <div class="form-group">
         <label for="education">Education:</label>
@@ -82,7 +96,7 @@
       </div>
 
   <div class="button-submit">
-    <button class="button-submit" type="submit" >Create Event</button>
+    <button class="button-submit" type="submit" >Create Employee</button>
   </div>
     <div *ngIf="errorMessage" class="error-message">
       *{{ errorMessage }}
