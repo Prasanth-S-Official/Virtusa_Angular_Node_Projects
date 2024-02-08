@@ -25,14 +25,24 @@
 
   <div class="grid-container">
     <div class="grid-item" *ngFor="let employee of employees">
-      <img src="{{ employee.photo }}" alt="Book Image" class="vacationRental-image" />
-      <div (click)="viewInfo(employee)">
-      <h2>{{ employee.firstName }}</h2>
-      <p>Email: {{ employee.mailId }}</p>
+      <img src="{{ employee.photo }}" alt="Employee Image" class="vacationRental-image" />
+        <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+        <p>Email: {{ employee.mailId }}</p>
       <p>Education: {{ employee.education}}</p>
       <p>Experience: {{ employee.experience}}</p>
-    </div>
       <div class="buttons">
+        <button
+          class="view-btn-grad"
+          (click)="viewInfo(employee)"
+        >
+          View
+        </button>
+        <button
+          class="edit-btn-grad"
+          (click)="navigateToEditEvent(employee); $event.stopPropagation()"
+        >
+          Edit
+        </button>
         <button
           class="delete-btn-grad btn-danger"
           (click)="
@@ -43,12 +53,7 @@
         >
           Delete
         </button>
-        <button
-          class="edit-btn-grad"
-          (click)="navigateToEditEvent(employee); $event.stopPropagation()"
-        >
-          Edit
-        </button>
+        
       </div>
     </div>
   </div>
