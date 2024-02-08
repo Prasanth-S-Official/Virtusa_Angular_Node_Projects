@@ -22,7 +22,7 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   navigateToAddEmployee() {
-    this.router.navigate(['/add-event']);
+    this.router.navigate(['/add-employee']);
   }
   logout() {
     // Perform logout logic here
@@ -42,9 +42,9 @@ export class AdminDashboardComponent implements OnInit {
     this.getEmployeesByUserId();
   }
 
-  navigateToEditEvent(employeeId: { employeeId: number }) {
+  navigateToEditEmployee(employeeId: { employeeId: number }) {
     console.log('Employee Id to be edited', employeeId);
-    this.router.navigate(['/edit-event', employeeId.employeeId]);
+    this.router.navigate(['/edit-employee', employeeId.employeeId]);
   }
 
   getEmployeesByUserId() {

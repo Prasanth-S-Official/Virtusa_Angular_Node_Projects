@@ -10,8 +10,6 @@ import { EventmanagementService } from 'src/app/services/eventmanagement.service
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent {
-
-
   eventForm: FormGroup;
   event: Event
   photoImage="";
