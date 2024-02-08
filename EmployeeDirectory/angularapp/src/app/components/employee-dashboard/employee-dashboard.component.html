@@ -26,20 +26,38 @@
       </div>
     </div>
   
-    <div class="grid-container">
-      <div class="grid-item" *ngFor="let employee of employees">
-        <img
-          src="{{ employee.photo }}"
-          alt="Employee Image"
-          class="vacationRental-image"
-        />
-        <div (click)="viewInfo(employee)">
-          <h2>{{ employee.firstName }}</h2>
-          <p>{{ employee.age }}</p>
-          <p>Start Date: {{ employee.startDate | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-    </div>
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Mobile Number</th>
+          <th>Mail Id</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Education</th>
+          <th>Experience</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.mobileNumber }}</td>
+          <td>{{ employee.mailId }}</td>
+          <td>{{ employee.dateOfBirth | date:'yyyy-MM-dd' }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.education }}</td>
+          <td>{{ employee.experience }}</td>
+          <td>
+            <button (click)="viewInfo(employee)">View Info</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   
   <div *ngIf="showLogoutPopup" class="logout-popup">
@@ -55,15 +73,16 @@
       <span class="close" (click)="toggleModal()">&times;</span>
       <h2>Employee Details</h2>
       <div class="image-container">
-        <p><strong>Position:</strong> {{ selectedItem.position }}</p>
-        <p><strong>Department:</strong> {{ selectedItem.department }}</p>
-        <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'yyyy-MM-dd'}}</p>
-        <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'yyyy-MM-dd'}}</p>
+        <p><strong>Employee name:</strong> {{ selectedItem.firstName }}  {{ selectedItem.lastName }}</p>
+        <p><strong>Experience:</strong> {{ selectedItem.experience }}</p>
+        <p><strong>Mobile Number:</strong> {{ selectedItem.mobileNumber}}</p>
+        <p><strong>Education:</strong> {{ selectedItem.education}}</p>
+        <p><strong>Gender:</strong> {{ selectedItem.gender}}</p>
         <p>
           <strong>Posted by:</strong> {{ selectedItem?.firstName }}
           {{ selectedItem?.lastName }}
         </p>
-        <p><strong>Contact Email: </strong>{{ selectedItem.email }}</p>
+        <p><strong>Contact Email: </strong>{{ selectedItem.mailId }}</p>
         <p><strong>Contact Phone:</strong> {{ selectedItem.mobileNumber }}</p>
       </div>
     </div>
