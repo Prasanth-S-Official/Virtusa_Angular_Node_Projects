@@ -6,20 +6,30 @@
 
 <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="firstName">Title:</label>
-      <input type="text" id="firstName" formControlName="firstName">
-      <div *ngIf="employeeForm.get('title').hasError('required') && employeeForm.get('firstName').touched">
-        *Title is required.
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label for="coverImage">Cover Image:</label>
-        <input type="file" id="coverImage" formControlName="coverImage" (change)="handleFileChange($event)" accept=".png, .jpg">
-        <div *ngIf="employeeForm.get('coverImage').hasError('required') && employeeForm.get('coverImage').touched">
-            *Photo is required.
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" formControlName="firstName">
+        <div *ngIf="employeeForm.get('firstName').hasError('required') && employeeForm.get('firstName').touched">
+          *First name is required.
         </div>
-    </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" formControlName="lastName">
+        <div *ngIf="employeeForm.get('lastName').hasError('required') && employeeForm.get('lastName').touched">
+          *Last name is required.
+        </div>
+      </div>
+    
+    
+      <div class="form-group">
+        <label for="photo">Photo:</label>
+        <input type="file" id="photo" formControlName="photo" (change)="handleFileChange($event)" accept=".png, .jpg">
+        <div *ngIf="employeeForm.get('photo').hasError('required') && employeeForm.get('photo').touched">
+          *Photo is required.
+        </div>
+      </div>
+    
 
     <div class="form-group">
         <label for="mobileNumber">Mobile Number:</label>
@@ -88,22 +98,6 @@
         </select>
         <div *ngIf="employeeForm.get('gender').hasError('required') && employeeForm.get('gender').touched">
             *Property Type is required.
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" formControlName="startDate">
-        <div *ngIf="employeeForm.get('startDate').hasError('required') && employeeForm.get('startDate').touched">
-            *Start Date is required.
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="endDate">End Date:</label>
-        <input type="date" id="endDate" formControlName="endDate">
-        <div *ngIf="employeeForm.get('endDate').hasError('required') && employeeForm.get('endDate').touched">
-            *Start Date is required.
         </div>
     </div>
 
