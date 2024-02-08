@@ -16,11 +16,8 @@ export class ParticipantDashboardComponent implements OnInit {
   selectedItem: any = {};
   showModal: boolean = false;
   
-  constructor(private router: Router,private eventManagementService: EventmanagementService ) { }
+  constructor(private eventManagementService: EventmanagementService ) { }
 
-  navigateToAddRental() {
-    this.router.navigate(['/add-rental']);
-  }
   logout() {
     // Perform logout logic here
     // For example, clear user authentication, navigate to the login page, etc.

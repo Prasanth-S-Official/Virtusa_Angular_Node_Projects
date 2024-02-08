@@ -10,14 +10,14 @@
       <input
         type="text"
         [(ngModel)]="searchText"
-        (input)="searchEmployeeManagements()"
+        (input)="searchEmployees()"
         placeholder="Search by employee name..."
       />
       <div>
         <label for="sort">Sort by Start Date:</label>
         <select
           [(ngModel)]="sortValue"
-          (change)="sortEmployeeManagements()"
+          (change)="sortEmployees()"
           class="sort-select">
             <option value="">Select</option>
           <option value="1">Date Ascending</option>
@@ -34,7 +34,7 @@
           class="vacationRental-image"
         />
         <div (click)="viewInfo(employee)">
-          <h2>{{ employee.fullName }}</h2>
+          <h2>{{ employee.fisrtName }}</h2>
           <p>{{ employee.position }}</p>
           <p>Start Date: {{ employee.startDate | date:'yyyy-MM-dd'}}</p>
         </div>
