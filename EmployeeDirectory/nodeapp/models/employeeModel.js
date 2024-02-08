@@ -8,7 +8,7 @@ const employeeSchema = new mongoose.Schema({
       },
     employeeId: {
         type: mongoose.Schema.Types.ObjectId,
-        default: new mongoose.Types.ObjectId, // Auto-generate ObjectId 
+        default: ()=> new mongoose.Types.ObjectId, // Auto-generate ObjectId 
         unique: true,
       },
     firstName: {
