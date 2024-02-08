@@ -67,7 +67,10 @@ getFormattedDate(dateString: string): string {
       (error) => {
         console.error('Error updating employee', error);
       }
-    );}
+    );}else{
+      console.error('Form is not valid. Cannot update employee.');
+
+    }
  }
 
  
