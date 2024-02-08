@@ -25,7 +25,7 @@
 
   <div class="grid-container">
     <div class="grid-item" *ngFor="let employee of employees">
-      <img src="{{ employee.photo }}" alt="Employee Image" class="vacationRental-image" />
+      <img src="{{ employee.photo }}" alt="Employee Image" class="employee-image" />
         <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
         <p>Email: {{ employee.mailId }}</p>
       <p>Education: {{ employee.education}}</p>
@@ -81,12 +81,15 @@
 <div class="modal" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
   <div class="modal-content">
     <span class="close" (click)="toggleModal()">&times;</span>
-    <h2>Details</h2>
+    <h2>{{ selectedItem.firstName }} {{ selectedItem.lastName }}</h2>
     <div class="image-container">
-      <p><strong>Description:</strong> {{ selectedItem.description }}</p>
-      <p><strong>Location:</strong> {{ selectedItem.location }}</p>
-      <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'yyyy-MM-dd'}}</p>
-      <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'yyyy-MM-dd'}}</p>
+      <p><strong>Email:</strong> {{ selectedItem.mailId }}</p>
+      <p><strong>Mobile Number:</strong> {{ selectedItem.mobileNumber }}</p>
+      <p><strong>Date of Birth:</strong> {{ selectedItem.dateOfBirth | date:'yyyy-MM-dd'}}</p>
+      <p><strong>Age:</strong> {{ selectedItem.age }}</p>
+      <p><strong>Gender:</strong> {{ selectedItem.gender }}</p>
+      <p><strong>Education:</strong> {{ selectedItem.education }}</p>
+      <p><strong>Experience:</strong> {{ selectedItem.experience }}</p>
     </div>
   </div>
 </div>
