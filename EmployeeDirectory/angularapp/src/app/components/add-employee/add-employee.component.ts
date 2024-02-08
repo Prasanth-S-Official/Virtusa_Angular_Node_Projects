@@ -11,13 +11,13 @@ import { Employee } from 'src/app/models/employee.model';
 })
 export class AddEmployeeComponent {
 
-  eventForm: FormGroup;
+  employeeForm: FormGroup;
   employee: Employee
   photoImage="";
   errorMessage = '';
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private route:Router) {
-    this.eventForm = this.fb.group({
+    this.employeeForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
@@ -31,33 +31,33 @@ export class AddEmployeeComponent {
   categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
 
   onSubmit() {
-    if (this.eventForm.valid) {
+    if (this.employeeForm.valid) {
       // Call the service method to post the product
-      console.log(this.eventForm.value);
+      console.log(this.employeeForm.value);
       //pass userid from local storage
-      // this.eventForm.value.userId=localStorage.getItem('userId');
+      // this.employeeForm.value.userId=localStorage.getItem('userId');
       this.employee = new Employee();
-      this.employee.firstName = this.eventForm.get('title').value;
-      this.employee.lastName = this.eventForm.get('category').value;
-      this.employee.mobileNumber = this.eventForm.get('description').value;
-      this.employee.mailId = this.eventForm.get('startDate').value;
-      this.employee.dateOfBirth = this.eventForm.get('location').value;
-      this.employee.age = this.eventForm.get('endDate').value;
-      this.employee.gender = this.eventForm.get('endDate').value;
-      this.employee.education = this.eventForm.get('endDate').value;
-      this.employee.experience = this.eventForm.get('endDate').value;
+      this.employee.firstName = this.employeeForm.get('firstName').value;
+      this.employee.lastName = this.employeeForm.get('lastName').value;
+      this.employee.mobileNumber = this.employeeForm.get('mobileNumber').value;
+      this.employee.mailId = this.employeeForm.get('mailId').value;
+      this.employee.dateOfBirth = this.employeeForm.get('dateOfBirth').value;
+      this.employee.age = this.employeeForm.get('age').value;
+      this.employee.gender = this.employeeForm.get('gender').value;
+      this.employee.education = this.employeeForm.get('education').value;
+      this.employee.experience = this.employeeForm.get('experience').value;
       this.employee.photo = this.photoImage;
       this.employee.userId = localStorage.getItem('userId');
-      this.eventManagementService.addEventManagement(this.employee).subscribe(
+      this.employeeService.addEmployee(this.employee).subscribe(
         (response) => {
           // Handle success if needed
           console.log('employee added successfully', response);
-          this.eventForm.reset(); // Reset the form
-          this.route.navigate(['/organiser-dashboard']);
+          this.employeeForm.reset(); // Reset the form
+          this.route.navigate(['/admin-dashboard']);
         },
         (error) => {
           // Handle error if needed
-          console.error('Error adding product', error);
+          console.error('Error adding employee', error);
         }
       );
     }else{
