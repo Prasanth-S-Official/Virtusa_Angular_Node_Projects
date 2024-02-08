@@ -23,7 +23,7 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   navigateToAddDoctor() {
-    this.router.navigate(['/add-employee']);
+    this.router.navigate(['/add-doctor']);
   }
   logout() {
     // Perform logout logic here
