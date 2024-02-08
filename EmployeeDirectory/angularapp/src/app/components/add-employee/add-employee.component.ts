@@ -13,21 +13,21 @@ export class AddEmployeeComponent {
 
   employeeForm: FormGroup;
   employee: Employee
-  photoImage="";
+  photoImage = "";
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private route:Router) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private route: Router) {
     this.employeeForm = this.fb.group({
       firstName: ['', Validators.required],
-  lastName: ['', Validators.required],
-  mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-  mailId: ['', [Validators.required, Validators.pattern(/^[a-z]+@[a-z]+\.[a-z]+$/)]],
-  dateOfBirth: ['', Validators.required],
-  age: ['', Validators.required],
-  gender: ['', Validators.required],
-  education: ['', Validators.required],
-  experience: ['', Validators.required],
-  photo: [null, Validators.required],
+      lastName: ['', Validators.required],
+      mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      mailId: ['', [Validators.required, Validators.pattern(/^[a-z]+@[a-z]+\.[a-z]+$/)]],
+      dateOfBirth: ['', Validators.required],
+      age: ['', Validators.required],
+      gender: ['', Validators.required],
+      education: ['', Validators.required],
+      experience: ['', Validators.required],
+      photo: [null, Validators.required],
     });
   }
 
@@ -63,7 +63,7 @@ export class AddEmployeeComponent {
           console.error('Error adding employee', error);
         }
       );
-    }else{
+    } else {
       this.errorMessage = "All fields are required"
     }
   }
@@ -74,7 +74,7 @@ export class AddEmployeeComponent {
     if (file) {
       this.convertFileToBase64(file).then(
         (base64String) => {
-          this.photoImage=base64String
+          this.photoImage = base64String
         },
         (error) => {
           console.error('Error converting file to base64:', error);

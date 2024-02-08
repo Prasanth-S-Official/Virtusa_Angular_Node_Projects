@@ -67,14 +67,6 @@
       </div>
       
       <div class="form-group">
-        <label for="gender">Gender:</label>
-        <input type="text" id="gender" formControlName="gender">
-        <div *ngIf="employeeForm.get('gender').hasError('required') && employeeForm.get('gender').touched">
-          *Gender is required.
-        </div>
-      </div>
-      
-      <div class="form-group">
         <label for="education">Education:</label>
         <input type="text" id="education" formControlName="education">
         <div *ngIf="employeeForm.get('education').hasError('required') && employeeForm.get('education').touched">
@@ -93,11 +85,11 @@
     <div class="form-group">
         <label for="gender">Gender:</label>
         <select id="gender" formControlName="gender">
-            <option value="">Select a gender type</option>
+            <option value="">Select</option>
             <option *ngFor="let type of genders" [value]="type">{{type}}</option>
         </select>
         <div *ngIf="employeeForm.get('gender').hasError('required') && employeeForm.get('gender').touched">
-            *Property Type is required.
+            *Gender is required.
         </div>
     </div>
 
