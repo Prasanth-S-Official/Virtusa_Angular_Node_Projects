@@ -4,84 +4,83 @@
   
       <h1>Update Event</h1>
   
-      <form *ngIf="event">
+      <form *ngIf="employee">
         <div class="form-group">
-          <label for="title">Title:</label>
-          <input [(ngModel)]="event.title" id="title" name="title" />
-        </div>
-  
-        <div class="form-group">
-          <label for="coverImage">Cover Image:</label>
-          <input
-            type="file"
-            id="coverImage"
-            name="coverImage"
-            (change)="handleFileChange($event)"
-            accept=".png, .jpg"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="description">Description:</label>
-          <textarea
-            [(ngModel)]="event.description"
-            id="description"
-            name="description"
-          ></textarea>
-        </div>
-  
-        <div class="form-group">
-          <label for="category">Category Type:</label>
-          <select
-            id="category"
-            name="category"
-            [(ngModel)]="event.category"
-          >
-            <option value="">Select a category type</option>
-            <option *ngFor="let type of categories" [value]="type">
-              {{ type }}
-            </option>
-          </select>
-        </div>
-  
-        <div class="form-group">
-          <label for="location">Location:</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            [(ngModel)]="event.location"
-          />
-        </div>
-
-        <div class="form-group">
-            <label for="startDate">Start Date:</label>
-            <input
-              type="date"
-              id="startDate"
-              name="startDate"
-            [value]="event.startDate"
-              [(ngModel)]="event.startDate"
-            />
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="employee.firstName" />
           </div>
-
+    
           <div class="form-group">
-            <label for="endDate">End Date:</label>
-            <input
-              type="date"
-              id="endDate"
-              name="endDate"
-              [value]="event.endDate"
-              [(ngModel)]="event.endDate"
-            />
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" [(ngModel)]="employee.lastName" />
           </div>
-
-        <div class="button-submit">
-          <button type="submit" (click)="updateEventManagement()">
-            Update Event
-          </button>
-        </div>
-      </form>
+    
+          <div class="form-group">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="text" id="mobileNumber" name="mobileNumber" [(ngModel)]="employee.mobileNumber" />
+            <div *ngIf="employeeForm.get('mobileNumber').hasError('required') && employeeForm.get('mobileNumber').touched">
+              *Mobile number is required.
+            </div>
+            <div *ngIf="employeeForm.get('mobileNumber').hasError('pattern') && employeeForm.get('mobileNumber').touched">
+              *Please enter a valid 10-digit number.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="mailId">Email:</label>
+            <input type="text" id="mailId" name="mailId" [(ngModel)]="employee.mailId" />
+            <div *ngIf="employeeForm.get('mailId').hasError('required') && employeeForm.get('mailId').touched">
+              *Email is required.
+            </div>
+            <div *ngIf="employeeForm.get('mailId').hasError('pattern') && employeeForm.get('mailId').touched">
+              *Enter a valid email address.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="text" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" />
+            <div *ngIf="employeeForm.get('dateOfBirth').hasError('required') && employeeForm.get('dateOfBirth').touched">
+              *Date of birth is required.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" [(ngModel)]="employee.age" />
+            <div *ngIf="employeeForm.get('age').hasError('required') && employeeForm.get('age').touched">
+              *Age is required.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" name="gender" [(ngModel)]="employee.gender" />
+            <div *ngIf="employeeForm.get('gender').hasError('required') && employeeForm.get('gender').touched">
+              *Gender is required.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="education">Education:</label>
+            <input type="text" id="education" name="education" [(ngModel)]="employee.education" />
+            <div *ngIf="employeeForm.get('education').hasError('required') && employeeForm.get('education').touched">
+              *Education is required.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="experience">Experience:</label>
+            <input type="text" id="experience" name="experience" [(ngModel)]="employee.experience" />
+            <div *ngIf="employeeForm.get('experience').hasError('required') && employeeForm.get('experience').touched">
+              *Experience is required.
+            </div>
+          </div>
+    
+          <div class="button-submit">
+            <button type="submit" (click)="updateEventManagement()">Update Event</button>
+          </div>
+        </form>
     </div>
   </div>
   
