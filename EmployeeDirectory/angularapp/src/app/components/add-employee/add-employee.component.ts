@@ -38,12 +38,15 @@ export class AddEmployeeComponent {
       // this.eventForm.value.userId=localStorage.getItem('userId');
       this.employee = new Employee();
       this.employee.firstName = this.eventForm.get('title').value;
-      this.employee.category = this.eventForm.get('category').value;
-      this.employee.description = this.eventForm.get('description').value;
-      this.employee.startDate = this.eventForm.get('startDate').value;
-      this.employee.location = this.eventForm.get('location').value;
-      this.employee.endDate = this.eventForm.get('endDate').value;
-      this.employee.coverImage = this.photoImage;
+      this.employee.lastName = this.eventForm.get('category').value;
+      this.employee.mobileNumber = this.eventForm.get('description').value;
+      this.employee.mailId = this.eventForm.get('startDate').value;
+      this.employee.dateOfBirth = this.eventForm.get('location').value;
+      this.employee.age = this.eventForm.get('endDate').value;
+      this.employee.gender = this.eventForm.get('endDate').value;
+      this.employee.education = this.eventForm.get('endDate').value;
+      this.employee.experience = this.eventForm.get('endDate').value;
+      this.employee.photo = this.photoImage;
       this.employee.userId = localStorage.getItem('userId');
       this.eventManagementService.addEventManagement(this.employee).subscribe(
         (response) => {
