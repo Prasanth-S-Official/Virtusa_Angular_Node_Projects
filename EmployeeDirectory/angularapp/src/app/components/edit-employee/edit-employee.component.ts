@@ -9,18 +9,16 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./edit-employee.component.css']
 })
 export class EditEmployeeComponent implements OnInit {
-
-  
   employee: any = {};
   photoImage="";
   constructor(private route: ActivatedRoute, private employeeService: EmployeeService, private router: Router) { }
 
-  categories = ['Male', 'Female'];
+  genders = ['Male', 'Female'];
 
   ngOnInit() {
-    const eventId = this.route.snapshot.paramMap.get('id');
-    console.log('Event Ids to be edited', eventId);
-    this.getEventManagementById(eventId);
+    const employeeId = this.route.snapshot.paramMap.get('id');
+    console.log('Event Ids to be edited', employeeId);
+    this.getEmployeeById(employeeId);
   }
 
 getFormattedDate(dateString: string): string {
@@ -30,11 +28,11 @@ getFormattedDate(dateString: string): string {
   }
   
 
-  getEventManagementById(id: string) {
-    this.employeeService.getEventManagementById(id).subscribe(
+  getEmployeeById(id: string) {
+    this.employeeService.getEmployeeById(id).subscribe(
       (response) => {
         this.employee = response;
-        this.employee.startDate = this.getFormattedDate(this.employee.startDate);
+        this.employee.dateOfBirth = this.getFormattedDate(this.employee.dateOfBirth);
         console.log(response)
       },
       (error) => {
@@ -43,13 +41,13 @@ getFormattedDate(dateString: string): string {
     );
   }
 
-  updateEventManagement() {
+  updateEmployee() {
     this.employee.coverImage=this.photoImage;
-    this.employeeService.updateEventManagement(this.employee).subscribe(
+    this.employeeService.updateEmployee(this.employee).subscribe(
       (response) => {
         console.log('Event updated successfully', response);
         //navigate to seller dashboard
-        this.router.navigate(['/organiser-dashboard']);
+        this.router.navigate(['/admin-dashboard']);
       },
       (error) => {
         console.error('Error updating employee', error);
