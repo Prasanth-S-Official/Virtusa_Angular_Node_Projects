@@ -55,10 +55,16 @@
     
           <div class="form-group">
             <label for="gender">Gender:</label>
-            <input type="text" id="gender" name="gender" [(ngModel)]="employee.gender" />
-            <div *ngIf="employeeForm.get('gender').hasError('required') && employeeForm.get('gender').touched">
-              *Gender is required.
-            </div>
+            <select
+              id="gender"
+              name="gender"
+              [(ngModel)]="employee.gender"
+            >
+              <option value="">Select</option>
+              <option *ngFor="let type of genders" [value]="type">
+                {{ type }}
+              </option>
+            </select>
           </div>
     
           <div class="form-group">
@@ -75,6 +81,17 @@
             <div *ngIf="employeeForm.get('experience').hasError('required') && employeeForm.get('experience').touched">
               *Experience is required.
             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="photo">Photo:</label>
+            <input
+              type="file"
+              id="photo"
+              name="photo"
+              (change)="handleFileChange($event)"
+              accept=".png, .jpg"
+            />
           </div>
     
           <div class="button-submit">
