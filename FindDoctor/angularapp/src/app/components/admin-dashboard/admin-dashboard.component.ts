@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Doctor } from 'src/app/models/doctor.model';
+import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,17 +12,17 @@ export class AdminDashboardComponent implements OnInit {
 
   
   showDeletePopup = false;
-  selectedEmployee: Employee;
+  selectedDoctor: Doctor;
   showLogoutPopup = false;
   selectedItem: any = {};
   showModal: boolean = false;
 
   constructor(
     private router: Router,
-    private employeeService: EmployeeService
+    private doctorService: DoctorService
   ) {}
 
-  navigateToAddEmployee() {
+  navigateToAddDoctor() {
     this.router.navigate(['/add-employee']);
   }
   logout() {
@@ -38,16 +40,16 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // when add vacationRental button is clicked, trigger this function getBooksByUserId()
-    this.getEmployeesByUserId();
+    this.getDoctorsByUserId();
   }
 
-  navigateToEditEmployee(employeeId: { employeeId: number }) {
-    console.log('Employee Id to be edited', employeeId);
+  navigateToEditDoctor(employeeId: { employeeId: number }) {
+    console.log('Doctor Id to be edited', employeeId);
     this.router.navigate(['/edit-employee', employeeId.employeeId]);
   }
 
-  getEmployeesByUserId() {
-    this.employeeService.getEmployeesByUserId().subscribe(
+  getDoctorsByUserId() {
+    this.doctorService.getDoctorsByUserId().subscribe(
       (data) => {
         console.log(data);
         this.employees = data;
@@ -58,11 +60,11 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
-  deleteEmployee(employeeId: string) {
-    this.employeeService.deleteEmployee(employeeId).subscribe(
+  deleteDoctor(employeeId: string) {
+    this.doctorService.deleteDoctor(employeeId).subscribe(
       (response) => {
-        console.log('Employee deleted successfully', response);
-        this.getEmployeesByUserId();
+        console.log('Doctor deleted successfully', response);
+        this.getDoctorsByUserId();
       },
       (error) => {
         console.error('Error deleting employee', error);
@@ -82,9 +84,9 @@ export class AdminDashboardComponent implements OnInit {
 
   searchText: string = ''; // Declare the 'searchText' property as a string
   sortValue: string = ''; // Declare the 'sortValue' property as a string
-  searchEmployeesByUserId() {
-    this.employeeService
-      .searchEmployeesByUserId(this.searchText)
+  searchDoctorsByUserId() {
+    this.doctorService
+      .searchDoctorsByUserId(this.searchText)
       .subscribe((event) => {
         this.employees = event;
       });

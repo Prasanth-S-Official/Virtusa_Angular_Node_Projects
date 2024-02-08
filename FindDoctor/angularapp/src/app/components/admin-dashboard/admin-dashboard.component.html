@@ -7,25 +7,25 @@
     <button class="logout-btn-grad" (click)="showLogoutPopup = true">
       Logout
     </button>
-    <button class="add-btn-grad" (click)="navigateToAddEmployee()">
-        Add new Employee
+    <button class="add-btn-grad" (click)="navigateToAddDoctor()">
+        Add new Doctor
       </button>
   </div>
-  <h1>Our Employees</h1>
+  <h1>Our Doctors</h1>
 
   <!-- </div> -->
   <div class="search-sort-container">
     <input
       type="text"
       [(ngModel)]="searchText"
-      (input)="searchEmployeesByUserId()"
+      (input)="searchDoctorsByUserId()"
       placeholder="Search by employee name..."
     />
   </div>
 
   <div class="grid-container">
     <div class="grid-item" *ngFor="let employee of employees">
-      <img src="{{ employee.photo }}" alt="Employee Image" class="employee-image" />
+      <img src="{{ employee.photo }}" alt="Doctor Image" class="employee-image" />
         <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
         <p>Email: {{ employee.mailId }}</p>
       <p>Education: {{ employee.education}}</p>
@@ -39,7 +39,7 @@
         </button>
         <button
           class="edit-btn-grad"
-          (click)="navigateToEditEmployee(employee); $event.stopPropagation()"
+          (click)="navigateToEditDoctor(employee); $event.stopPropagation()"
         >
           Edit
         </button>
@@ -47,7 +47,7 @@
           class="delete-btn-grad btn-danger"
           (click)="
             showDeletePopup = true;
-            selectedEmployee = employee;
+            selectedDoctor = employee;
             $event.stopPropagation()
           "
         >
@@ -62,7 +62,7 @@
 <div *ngIf="showDeletePopup" class="delete-popup">
   <p>Are you sure you want to delete?</p>
   <button
-    (click)="deleteEmployee(selectedEmployee); showDeletePopup = false"
+    (click)="deleteDoctor(selectedDoctor); showDeletePopup = false"
     id="delete-btn"
   >
     Yes, Delete
