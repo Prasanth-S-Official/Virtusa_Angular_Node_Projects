@@ -7,13 +7,21 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
+import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
+import { EditDoctorComponent } from './components/edit-doctor/edit-doctor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    ErrorComponent
+    ErrorComponent,
+    AdminDashboardComponent,
+    PatientDashboardComponent,
+    AddDoctorComponent,
+    EditDoctorComponent
   ],
   imports: [
     BrowserModule,
