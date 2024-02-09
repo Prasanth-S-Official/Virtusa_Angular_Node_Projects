@@ -34,38 +34,38 @@ export class AdminDashboardComponent implements OnInit {
     window.location.href = '/login';
   }
 
-  employees: any[] = []; // Declare the 'vacationRentals' property as an array of any type
+  doctors: any[] = []; // Declare the 'vacationRentals' property as an array of any type
 
   ngOnInit(): void {
     // when add vacationRental button is clicked, trigger this function getBooksByUserId()
     this.getDoctorsByUserId();
   }
 
-  navigateToEditDoctor(employeeId: { employeeId: number }) {
-    console.log('Doctor Id to be edited', employeeId);
-    this.router.navigate(['/edit-employee', employeeId.employeeId]);
+  navigateToEditDoctor(doctorId: { doctorId: number }) {
+    console.log('Doctor Id to be edited', doctorId);
+    this.router.navigate(['/edit-doctor', doctorId.doctorId]);
   }
 
   getDoctorsByUserId() {
     this.doctorService.getDoctorsByUserId().subscribe(
       (data) => {
         console.log(data);
-        this.employees = data;
+        this.doctors = data;
       },
       (error) => {
-        console.error('Error retrieving employees', error);
+        console.error('Error retrieving doctors', error);
       }
     );
   }
 
-  deleteDoctor(employeeId: string) {
-    this.doctorService.deleteDoctor(employeeId).subscribe(
+  deleteDoctor(doctorId: string) {
+    this.doctorService.deleteDoctor(doctorId).subscribe(
       (response) => {
         console.log('Doctor deleted successfully', response);
         this.getDoctorsByUserId();
       },
       (error) => {
-        console.error('Error deleting employee', error);
+        console.error('Error deleting doctor', error);
       }
     );
   }
@@ -86,7 +86,7 @@ export class AdminDashboardComponent implements OnInit {
     this.doctorService
       .searchDoctorsByUserId(this.searchText)
       .subscribe((event) => {
-        this.employees = event;
+        this.doctors = event;
       });
   }
 }
