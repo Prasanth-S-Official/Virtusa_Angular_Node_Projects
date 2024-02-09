@@ -9,8 +9,6 @@ import { DoctorService } from 'src/app/services/doctor.service';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-
-  
   showDeletePopup = false;
   selectedDoctor: Doctor;
   showLogoutPopup = false;

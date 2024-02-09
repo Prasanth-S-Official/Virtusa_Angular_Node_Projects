@@ -24,7 +24,7 @@
   </div>
 
   <div class="grid-container">
-    <div class="grid-item" *ngFor="let employee of employees">
+    <div class="grid-item" *ngFor="let employee of doctors">
       <img src="{{ employee.photo }}" alt="Doctor Image" class="employee-image" />
         <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
         <p>Email: {{ employee.mailId }}</p>
