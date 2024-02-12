@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Doctor } from 'src/app/models/doctor.model';
 import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
   styleUrls: ['./patient-dashboard.component.css']
 })
 export class PatientDashboardComponent implements OnInit {
-  selectedEvent: Event;
+  selectedDoctor: Doctor;
   showLogoutPopup = false;
   selectedItem: any = {};
   showModal: boolean = false;
@@ -25,7 +26,7 @@ export class PatientDashboardComponent implements OnInit {
     window.location.href = '/login';
   }
 
-  events: any[] = []; // Declare the 'vacationRentals' property as an array of any type
+  doctors: any[] = []; // Declare the 'vacationRentals' property as an array of any type
 
   ngOnInit(): void {
     // when add vacationRental button is clicked, trigger this function getBooksByUserId()
@@ -36,7 +37,7 @@ export class PatientDashboardComponent implements OnInit {
     this.doctorService.getAllDoctors().subscribe(
       (data) => {
         console.log(data);
-        this.events = data;
+        this.doctors = data;
       },
       (error) => {
         console.error('Error retrieving vacationRentals', error);
@@ -44,8 +45,8 @@ export class PatientDashboardComponent implements OnInit {
     );
   }
 
-  viewInfo(vacationRental: any) {
-    this.selectedItem = vacationRental;
+  viewInfo(doctor: any) {
+    this.selectedItem = doctor;
     this.doctorService.getAllUsers().subscribe(users => {
       const user = users.find(user => user.userId === this.selectedItem.userId);
       if (user) {
@@ -67,13 +68,13 @@ export class PatientDashboardComponent implements OnInit {
   sortValue: string = ''; // Declare the 'sortValue' property as a string
   searchDoctors() {
     this.doctorService.searchDoctors(this.searchText).subscribe(eventResponse => {
-      this.events = eventResponse;
+      this.doctors = eventResponse;
     });
   }
 
   sortDoctors() {
     this.doctorService.sortDoctors(this.sortValue).subscribe(eventResponse => {
-      this.events = eventResponse;
+      this.doctors = eventResponse;
     });
 
 

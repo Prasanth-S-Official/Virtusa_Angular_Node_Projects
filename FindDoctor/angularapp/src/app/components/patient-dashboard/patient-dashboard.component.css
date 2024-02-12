@@ -39,7 +39,7 @@ h1 {
   th,
   td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
   }
   
@@ -175,7 +175,7 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    /* overflow: auto; */
+    overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
   }
   
@@ -184,7 +184,7 @@ h1 {
     margin: 12% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 25%;
+    width: 40%;
     color: black;
     font-size: 20px;
     border-radius: 10px;
@@ -224,31 +224,50 @@ h1 {
     text-decoration: none;
   }
   
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 1rem;
-  }
-  
-  .grid-item {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor:grab
-  }
-  
-  .vacationRental-image {
-    height: 200px;
+  .employee-table {
     width: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
   }
+  
+  .employee-table th, .employee-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .employee-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .employee-table td button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .employee-table td button:hover {
+    background-color: #45a049;
+  }
+
 
   .image-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+  }
+
+  .employee-image{
+    height:250px;
+    width:200px;
+    border-radius:5px;
+    border:1px solid black;
+    margin-right:20px;
   }
   
   .buttons{
@@ -257,7 +276,7 @@ h1 {
   
   h2{
    text-align: center;
-   font-size: 30px;
+   font-size: 25px;
    font-weight: bold;
   }
   
@@ -275,5 +294,5 @@ h1 {
   }
 
   p{
-    font-size: 20px;
+    font-size: 16px;
   }
