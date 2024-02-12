@@ -62,6 +62,7 @@ export class PatientDashboardComponent implements OnInit {
 
   toggleModal() {
     this.showModal = !this.showModal;
+    console.log(this.getAllDoctors)
   }
 
   searchText: string = ''; // Declare the 'searchText' property as a string

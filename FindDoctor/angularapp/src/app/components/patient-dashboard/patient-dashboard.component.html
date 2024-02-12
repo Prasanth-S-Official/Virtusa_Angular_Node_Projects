@@ -7,7 +7,7 @@
     <h1>Available Doctors</h1>
   
     <div class="search-sort-container">
-      <input type="text" [(ngModel)]="searchText" (input)="searchDoctors()" placeholder="Search by employee name..." />
+      <input type="text" [(ngModel)]="searchText" (input)="searchDoctors()" placeholder="Search by doctor name..." />
       <div>
         <label for="sort">Sort by Experience:</label>
         <select [(ngModel)]="sortValue" (change)="sortDoctors()" class="sort-select">
@@ -31,7 +31,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let doctor of doctors">
-            <td>        <img src="{{ doctor.photo }}" alt="Employee Image" class="employee-image" /> 
+            <td>
+                <img src="{{ doctor.photo }}" alt="Employee Image" class="employee-image" /> 
             </td>
           <td>{{ doctor.firstName }}</td>
           <td>{{ doctor.lastName }}</td>
