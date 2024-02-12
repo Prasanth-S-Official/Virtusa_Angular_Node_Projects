@@ -181,7 +181,7 @@ input {
     margin: 12% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 30%;
+    width: 35%;
     color: black;
     font-size: 20px;
     border-radius: 10px;
@@ -279,4 +279,8 @@ hr {
 p{
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+.doctor-name{
+    text-align: center;
 }

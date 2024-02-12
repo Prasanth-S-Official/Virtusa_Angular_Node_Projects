@@ -80,15 +80,12 @@
 <div class="modal" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
   <div class="modal-content">
     <span class="close" (click)="toggleModal()">&times;</span>
-    <h2>{{ selectedItem.firstName }} {{ selectedItem.lastName }}</h2>
+    <h2 class="doctor-name">{{ selectedItem.firstName }} {{ selectedItem.lastName }}</h2>
     <div class="image-container">
-      <p><strong>Email:</strong> {{ selectedItem.mailId }}</p>
-      <p><strong>Mobile Number:</strong> {{ selectedItem.mobileNumber }}</p>
-      <p><strong>Date of Birth:</strong> {{ selectedItem.dateOfBirth | date:'yyyy-MM-dd'}}</p>
-      <p><strong>Age:</strong> {{ selectedItem.age }}</p>
-      <p><strong>Gender:</strong> {{ selectedItem.gender }}</p>
-      <p><strong>Education:</strong> {{ selectedItem.education }}</p>
       <p><strong>Experience:</strong> {{ selectedItem.experience }}</p>
+      <p><strong>Specialization:</strong> {{ selectedItem.specialization }}</p>
+      <p><strong>Location:</strong> {{ selectedItem.location}}</p>
+      <p><strong>Availability:</strong> {{ selectedItem.availability }}</p>
     </div>
   </div>
 </div>
