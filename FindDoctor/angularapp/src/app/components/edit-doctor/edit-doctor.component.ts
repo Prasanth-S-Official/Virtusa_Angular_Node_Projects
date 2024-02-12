@@ -12,7 +12,7 @@ export class EditDoctorComponent implements OnInit {
   photoImage="";
   constructor(private route: ActivatedRoute, private doctorService: DoctorService, private router: Router) { }
 
-  availabilities: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  availabilities = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   ngOnInit() {
     const doctorId = this.route.snapshot.paramMap.get('id');
@@ -26,7 +26,7 @@ export class EditDoctorComponent implements OnInit {
       this.doctor.availabilities.push(availability);
     } else {
       // Remove amenity from the array if unchecked
-      const index = this.doctor.availabilities.indexOf(this.availability);
+      const index = this.doctor.availabilities.indexOf(availability);
       if (index !== -1) {
         this.doctor.availabilities.splice(index, 1);
       }
