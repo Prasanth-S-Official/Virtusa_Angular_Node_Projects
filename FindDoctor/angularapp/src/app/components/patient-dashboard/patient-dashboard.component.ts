@@ -12,6 +12,7 @@ export class PatientDashboardComponent implements OnInit {
   selectedDoctor: Doctor;
   showLogoutPopup = false;
   selectedItem: any = {};
+  selected : any = {}
   showModal: boolean = false;
 
   constructor(private doctorService: DoctorService, private authService: AuthService) { }
@@ -47,18 +48,15 @@ export class PatientDashboardComponent implements OnInit {
   }
 
   viewInfo(doctor: any) {
-    this.selectedItem = doctor;
-    console.log(this.selectedItem)
+    this.selected = doctor;
     this.authService.getAllUsers().subscribe(users => {
-      console.log(users)
-      const user = users.find(user => user.userId === this.selectedItem.userId);
+      const user = users.find(user => user.userId === this.selected.userId);      
       if (user) {
         this.selectedItem.firstName = user.firstName;
         this.selectedItem.lastName = user.lastName;
         this.selectedItem.email = user.email;
         this.selectedItem.mobileNumber = user.mobileNumber;
       }
-      console.log('sdfgh',this.selectedItem);
     });
     this.toggleModal();
   }
