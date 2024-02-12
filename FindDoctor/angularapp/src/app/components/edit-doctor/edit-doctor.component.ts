@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoctorService } from 'src/app/services/doctor.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-doctor',
@@ -11,9 +12,33 @@ export class EditDoctorComponent implements OnInit {
   doctor: any = {
     availability: [] 
   };
-  photoImage="";
-  constructor(private route: ActivatedRoute, private doctorService: DoctorService, private router: Router) { }
+  doctorForm: FormGroup;
 
+  photoImage="";
+  constructor( private fb: FormBuilder, private route: ActivatedRoute, private doctorService: DoctorService, private router: Router) { 
+    this.doctorForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      specialization: ['', Validators.required],
+      experience: ['', Validators.required],
+      location: ['', Validators.required],
+      availability: this.fb.array([], [availabilityValidator]), // Add the custom validator here
+      photo: [null, Validators.required],
+    });
+  }
+  export function availabilityValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const availabilities = control.value as string[];
+  
+      if (!availabilities || availabilities.length === 0) {
+        return { required: true, message: 'Please select at least one availability.' };
+      }
+  
+      // Add additional validation logic if needed
+  
+      return null; // No validation error
+    };
+  }
   availabilities: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   ngOnInit() {
@@ -21,6 +46,8 @@ export class EditDoctorComponent implements OnInit {
     console.log('Doctor Ids to be edited', doctorId);
     this.getDoctorById(doctorId);
   }
+
+  
 
   handleCheckboxChange(event: any, availability: string): void {    
     if (event.target.checked) {
