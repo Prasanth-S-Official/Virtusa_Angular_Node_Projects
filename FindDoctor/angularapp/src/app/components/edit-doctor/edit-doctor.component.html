@@ -42,12 +42,12 @@
   
         <div class="form-group">
           <label>Availability:</label>
-          <div *ngFor="let availability of availabilities; index as i">
+          <div *ngFor="let availability of availability; index as i">
               <div class="amenity-container">
                   <input
                   type="checkbox"
                   id="availability{{ i }}"
-                  [checked]="doctor.availabilities && doctor.availabilities.includes(availability)"
+                  [checked]="doctor.availability && doctor.availability.includes(availability)"
                   (change)="handleCheckboxChange($event, availability)"
                 />
                 <label for="availability{{ i }}">{{ availability }}</label>

@@ -12,7 +12,7 @@ export class EditDoctorComponent implements OnInit {
   photoImage="";
   constructor(private route: ActivatedRoute, private doctorService: DoctorService, private router: Router) { }
 
-  availabilities = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  availabilities: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   ngOnInit() {
     const doctorId = this.route.snapshot.paramMap.get('id');
