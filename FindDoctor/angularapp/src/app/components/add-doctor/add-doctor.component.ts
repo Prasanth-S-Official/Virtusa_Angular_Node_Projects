@@ -36,13 +36,13 @@ export class AddDoctorComponent {
       //pass userid from local storage
       // this.doctorForm.value.userId=localStorage.getItem('userId');
       this.doctor = new Doctor();
-      this.doctor.title = this.doctorForm.get('title').value;
-      this.doctor.category = this.doctorForm.get('category').value;
-      this.doctor.description = this.doctorForm.get('description').value;
-      this.doctor.startDate = this.doctorForm.get('startDate').value;
+      this.doctor.firstName = this.doctorForm.get('title').value;
+      this.doctor.lastName = this.doctorForm.get('category').value;
+      this.doctor.specialization = this.doctorForm.get('description').value;
+      this.doctor.experience = this.doctorForm.get('startDate').value;
       this.doctor.location = this.doctorForm.get('location').value;
-      this.doctor.endDate = this.doctorForm.get('endDate').value;
-      this.doctor.coverImage = this.photoImage;
+      this.doctor.availability = this.doctorForm.get('endDate').value;
+      this.doctor.photo = this.photoImage;
       this.doctor.userId = localStorage.getItem('userId');
       this.doctorService.addDoctor(this.doctor).subscribe(
         (response) => {
