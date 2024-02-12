@@ -48,20 +48,20 @@
 
     <div class="form-group">
       <label>Availability:</label>
-      <div *ngFor="let amenity of availabilities; index as i">
+      <div *ngFor="let availability of availabilities; index as i">
           <div class="amenity-container">
           <input
               type="checkbox"
-              id="amenity{{i}}"
-              [value]="amenity"
-              [checked]="isAmenitySelected(amenity)"
-              (change)="handleCheckboxChange($event, amenity)"
+              id="availability{{i}}"
+              [value]="availability"
+              [checked]="isAvailabilitySelected(availability)"
+              (change)="handleCheckboxChange($event, availability)"
           />
-          <label [for]="'amenity' + i">{{amenity}}</label>
+          <label [for]="'availability' + i">{{availability}}</label>
           </div>
       </div>
-      <div *ngIf="rentalForm.get('amenities').hasError('required') && rentalForm.get('amenities').touched">
-          *At least one amenity is required.
+      <div *ngIf="doctorForm.get('availabilities').hasError('required') && doctorForm.get('availabilities').touched">
+          *At least one availability is required.
       </div>
   </div>
 

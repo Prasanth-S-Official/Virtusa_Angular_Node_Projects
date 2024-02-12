@@ -23,26 +23,26 @@ export class AddDoctorComponent {
       specialization: ['', Validators.required],
       experience: ['', Validators.required],
       location: ['', Validators.required],
-      availability: this.fb.array([]),
+      availabilities: this.fb.array([]),
       photo: [null, Validators.required],
     });
   }
 
-  availability = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  availabilities = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   handleCheckboxChange(event: Event, availability: string): void {
-    const amenities = this.doctorForm.get('availability') as FormArray;
+    const availabilities = this.doctorForm.get('availability') as FormArray;
     if ((<HTMLInputElement>event.target).checked) {
-      amenities.push(this.fb.control(availability));
+      availabilities.push(this.fb.control(availability));
     } else {
       let index = -1;
-      amenities.controls.forEach((ctrl, i) => {
+      availabilities.controls.forEach((ctrl, i) => {
         if (ctrl.value === availability) {
           index = i;
         }
       });
       if (index > -1) {
-        amenities.removeAt(index);
+        availabilities.removeAt(index);
       }
     }
   }

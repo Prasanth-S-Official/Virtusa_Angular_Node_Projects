@@ -93,3 +93,7 @@
     text-align: center!important;
     width: auto;
   }
+
+  .amenity-container{
+    display: flex;
+  }
