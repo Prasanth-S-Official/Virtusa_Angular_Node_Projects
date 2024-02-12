@@ -47,12 +47,32 @@
     </div>
 
     <div class="form-group">
-        <label for="endDate">End Date:</label>
-        <input type="date" id="endDate" formControlName="endDate">
-        <div *ngIf="doctorForm.get('endDate').hasError('required') && doctorForm.get('endDate').touched">
-            *Start Date is required.
-        </div>
-    </div>
+      <label>Availability:</label>
+      <div *ngFor="let amenity of availabilities; index as i">
+          <div class="amenity-container">
+          <input
+              type="checkbox"
+              id="amenity{{i}}"
+              [value]="amenity"
+              [checked]="isAmenitySelected(amenity)"
+              (change)="handleCheckboxChange($event, amenity)"
+          />
+          <label [for]="'amenity' + i">{{amenity}}</label>
+          </div>
+      </div>
+      <div *ngIf="rentalForm.get('amenities').hasError('required') && rentalForm.get('amenities').touched">
+          *At least one amenity is required.
+      </div>
+  </div>
+
+
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <input type="file" id="photo" formControlName="photo" (change)="handleFileChange($event)" accept=".png, .jpg">
+      <div *ngIf="doctorForm.get('photo').hasError('required') && doctorForm.get('photo').touched">
+          *Photo is required.
+      </div>
+  </div>
 
   <div class="button-submit">
     <button class="button-submit" type="submit" >Create Event</button>

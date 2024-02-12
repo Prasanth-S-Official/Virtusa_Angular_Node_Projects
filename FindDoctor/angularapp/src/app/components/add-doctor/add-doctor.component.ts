@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray } from '@angular/forms';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { Doctor } from 'src/app/models/doctor.model';
 
@@ -22,12 +23,34 @@ export class AddDoctorComponent {
       specialization: ['', Validators.required],
       experience: ['', Validators.required],
       location: ['', Validators.required],
-      availability: ['', Validators.required],
+      availability: this.fb.array([]),
       photo: [null, Validators.required],
     });
   }
 
-  categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
+  availability = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  handleCheckboxChange(event: Event, availability: string): void {
+    const amenities = this.doctorForm.get('availability') as FormArray;
+    if ((<HTMLInputElement>event.target).checked) {
+      amenities.push(this.fb.control(availability));
+    } else {
+      let index = -1;
+      amenities.controls.forEach((ctrl, i) => {
+        if (ctrl.value === availability) {
+          index = i;
+        }
+      });
+      if (index > -1) {
+        amenities.removeAt(index);
+      }
+    }
+  }
+
+  isAvailabilitySelected(availability: string): boolean {
+    const availabilities = this.doctorForm.get('availability') as FormArray;
+    return availabilities && availabilities.controls.some(control => control.value === availability);
+  }
 
   onSubmit() {
     if (this.doctorForm.valid) {
