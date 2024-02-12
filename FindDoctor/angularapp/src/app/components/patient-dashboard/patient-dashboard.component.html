@@ -21,6 +21,7 @@
     <table class="employee-table">
       <thead>
         <tr>
+        <th>Doctor Photo</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Specialization</th>
@@ -30,6 +31,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let doctor of doctors">
+            <td>        <img src="{{ doctor.photo }}" alt="Employee Image" class="employee-image" /> 
+            </td>
           <td>{{ doctor.firstName }}</td>
           <td>{{ doctor.lastName }}</td>
           <td>{{ doctor.specialization }}</td>
@@ -55,20 +58,41 @@
       <span class="close" (click)="toggleModal()">&times;</span>
       <h2>Doctor Details</h2>
       <div class="image-container">
-        <img src="{{ selectedItem.photo }}" alt="Employee Image" class="employee-image" />
-        <div>
-          <p><strong>Doctor name:</strong> {{ selectedItem.firstName }} {{ selectedItem.lastName }}</p>
-          <p><strong>Experience:</strong> {{ selectedItem.experience }}</p>
-          <p><strong>Specialization:</strong> {{ selectedItem.specialization }}</p>
-          <p><strong>Location:</strong>{{ selectedItem.location }}</p>
-          <p><strong>Availability:</strong>{{ selectedItem.availability }}</p>
-          <p>
-            <strong>Posted by:</strong> {{ selectedItem?.firstName }}
-            {{ selectedItem?.lastName }}
-          </p>
-          <p><strong>Contact Email: </strong>{{ selectedItem.email }}</p>
-          <p><strong>Contact Phone:</strong> {{ selectedItem.mobileNumber }}</p>
-        </div>
+        <table class="doctor-details-table">
+            <tr>
+              <td><strong>Doctor name:</strong></td>
+              <td>{{ selectedItem.firstName }} {{ selectedItem.lastName }}</td>
+            </tr>
+            <tr>
+              <td><strong>Experience:</strong></td>
+              <td>{{ selectedItem.experience }}</td>
+            </tr>
+            <tr>
+              <td><strong>Specialization:</strong></td>
+              <td>{{ selectedItem.specialization }}</td>
+            </tr>
+            <tr>
+              <td><strong>Location:</strong></td>
+              <td>{{ selectedItem.location }}</td>
+            </tr>
+            <tr>
+              <td><strong>Availability:</strong></td>
+              <td>{{ selectedItem.availability }}</td>
+            </tr>
+            <tr>
+              <td><strong>Posted by:</strong></td>
+              <td>{{ selectedItem?.firstName }} {{ selectedItem?.lastName }}</td>
+            </tr>
+            <tr>
+              <td><strong>Contact Email:</strong></td>
+              <td>{{ selectedItem.email }}</td>
+            </tr>
+            <tr>
+              <td><strong>Contact Phone:</strong></td>
+              <td>{{ selectedItem.mobileNumber }}</td>
+            </tr>
+          </table>
+          
   
       </div>
     </div>

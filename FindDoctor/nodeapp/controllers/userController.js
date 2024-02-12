@@ -42,7 +42,7 @@ const addUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({}).select('-_id -__v');
-    res.status(200).json({"users" : users});
+    res.status(200).json(users);
   } catch (error) {
     // console.log("getallerror");
     res.status(500).json({ message: error.message });
