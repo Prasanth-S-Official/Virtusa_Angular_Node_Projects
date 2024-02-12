@@ -248,6 +248,7 @@ input {
 }
 
 .buttons {
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items:center;
@@ -255,7 +256,7 @@ input {
 }
 
 h2 {
-    text-align: center;
+    margin-bottom: 0px;
 }
 
 hr {
@@ -276,6 +277,6 @@ hr {
 }
 
 p{
-    padding-top: 0px;
-    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
