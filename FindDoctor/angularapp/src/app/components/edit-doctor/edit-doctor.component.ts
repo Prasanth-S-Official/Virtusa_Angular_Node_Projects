@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-doctor',
@@ -22,11 +23,11 @@ export class EditDoctorComponent implements OnInit {
       specialization: ['', Validators.required],
       experience: ['', Validators.required],
       location: ['', Validators.required],
-      availability: this.fb.array([], [availabilityValidator]), // Add the custom validator here
+      availability: this.fb.array([], [this.availabilityValidator]), // Add the custom validator here
       photo: [null, Validators.required],
     });
   }
-  export function availabilityValidator(): ValidatorFn {
+  availabilityValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const availabilities = control.value as string[];
   

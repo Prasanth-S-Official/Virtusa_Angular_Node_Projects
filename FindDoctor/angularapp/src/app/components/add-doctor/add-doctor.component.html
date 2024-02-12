@@ -60,8 +60,8 @@
           <label [for]="'availability' + i">{{availability}}</label>
           </div>
       </div>
-      <div *ngIf="doctorForm.get('availability').hasError('required') && doctorForm.get('availability').touched">
-          *At least one availability is required.
+      <div *ngIf="doctorForm.get('availability').hasError('required')">
+        {{ doctorForm.get('availability').getError('message') }}
       </div>
   </div>
 

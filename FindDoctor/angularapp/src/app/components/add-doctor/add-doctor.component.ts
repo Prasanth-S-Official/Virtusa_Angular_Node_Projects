@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { Doctor } from 'src/app/models/doctor.model';
+import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-add-doctor',
@@ -23,9 +24,23 @@ export class AddDoctorComponent {
       specialization: ['', Validators.required],
       experience: ['', Validators.required],
       location: ['', Validators.required],
-      availability: this.fb.array([]),
+      availability: this.fb.array([], [this.availabilityValidator]),
       photo: [null, Validators.required],
     });
+  }
+
+  availabilityValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const availabilities = control.value as string[];
+  
+      if (!availabilities || availabilities.length === 0) {
+        return { required: true, message: 'Please select at least one availability.' };
+      }
+  
+      // Add additional validation logic if needed
+  
+      return null; // No validation error
+    };
   }
 
   availabilities = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
