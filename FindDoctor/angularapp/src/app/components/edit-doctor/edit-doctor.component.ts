@@ -12,7 +12,7 @@ export class EditDoctorComponent implements OnInit {
   photoImage="";
   constructor(private route: ActivatedRoute, private doctorService: DoctorService, private router: Router) { }
 
-  availability: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  availabilities: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   ngOnInit() {
     const doctorId = this.route.snapshot.paramMap.get('id');
@@ -20,15 +20,15 @@ export class EditDoctorComponent implements OnInit {
     this.getDoctorById(doctorId);
   }
 
-  handleCheckboxChange(event: any, amenity: string): void {
+  handleCheckboxChange(event: any, availability: string): void {
     if (event.target.checked) {
       // Add amenity to the array if checked
-      this.doctor.amenities.push(amenity);
+      this.doctor.availabilities.push(availability);
     } else {
       // Remove amenity from the array if unchecked
-      const index = this.doctor.amenities.indexOf(amenity);
+      const index = this.doctor.availabilities.indexOf(this.availability);
       if (index !== -1) {
-        this.doctor.amenities.splice(index, 1);
+        this.doctor.availabilities.splice(index, 1);
       }
     }
   }
