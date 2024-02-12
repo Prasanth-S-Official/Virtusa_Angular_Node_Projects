@@ -43,10 +43,6 @@ export class DoctorService {
     return this.http.get(`${this.apiUrl}/api/doctor/user/${userId}`, { params: {userId, searchValue }});
   }
 
-  getAllUsers(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/users`);
-  }
-
   searchDoctors(searchValue: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/api/doctor`, { params: { searchValue }});
   }

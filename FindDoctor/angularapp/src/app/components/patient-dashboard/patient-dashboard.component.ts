@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Doctor } from 'src/app/models/doctor.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class PatientDashboardComponent implements OnInit {
   selectedItem: any = {};
   showModal: boolean = false;
 
-  constructor(private doctorService: DoctorService) { }
+  constructor(private doctorService: DoctorService, private authService: AuthService) { }
 
   logout() {
     // Perform logout logic here
@@ -36,7 +37,7 @@ export class PatientDashboardComponent implements OnInit {
   getAllDoctors() {
     this.doctorService.getAllDoctors().subscribe(
       (data) => {
-        console.log(data);
+       
         this.doctors = data;
       },
       (error) => {
@@ -47,7 +48,9 @@ export class PatientDashboardComponent implements OnInit {
 
   viewInfo(doctor: any) {
     this.selectedItem = doctor;
-    this.doctorService.getAllUsers().subscribe(users => {
+    console.log(this.selectedItem)
+    this.authService.getAllUsers().subscribe(users => {
+      console.log(users)
       const user = users.find(user => user.userId === this.selectedItem.userId);
       if (user) {
         this.selectedItem.firstName = user.firstName;
@@ -55,7 +58,7 @@ export class PatientDashboardComponent implements OnInit {
         this.selectedItem.email = user.email;
         this.selectedItem.mobileNumber = user.mobileNumber;
       }
-      console.log(this.selectedItem);
+      console.log('sdfgh',this.selectedItem);
     });
     this.toggleModal();
   }
