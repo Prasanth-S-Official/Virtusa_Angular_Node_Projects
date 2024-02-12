@@ -39,10 +39,10 @@
     </div>
 
     <div class="form-group">
-        <label for="experience">Experience:</label>
-        <input type="text" id="experience" formControlName="experience">
+        <label for="experience">Experience in yrs:</label>
+        <input type="number" id="experience" formControlName="experience">
         <div *ngIf="doctorForm.get('experience').hasError('required') && doctorForm.get('experience').touched">
-            *Start Date is required.
+            *Experience is required.
         </div>
     </div>
 
@@ -60,7 +60,7 @@
           <label [for]="'availability' + i">{{availability}}</label>
           </div>
       </div>
-      <div *ngIf="doctorForm.get('availabilities').hasError('required') && doctorForm.get('availabilities').touched">
+      <div *ngIf="doctorForm.get('availability').hasError('required') && doctorForm.get('availability').touched">
           *At least one availability is required.
       </div>
   </div>

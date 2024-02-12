@@ -23,7 +23,7 @@ export class AddDoctorComponent {
       specialization: ['', Validators.required],
       experience: ['', Validators.required],
       location: ['', Validators.required],
-      availabilities: this.fb.array([]),
+      availability: this.fb.array([]),
       photo: [null, Validators.required],
     });
   }

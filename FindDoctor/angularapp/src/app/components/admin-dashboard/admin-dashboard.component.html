@@ -27,9 +27,8 @@
     <div class="grid-item" *ngFor="let doctor of doctors">
       <img src="{{ doctor.photo }}" alt="Doctor Image" class="doctor-image" />
         <h2>{{ doctor.firstName }} {{ doctor.lastName }}</h2>
-        <p>Email: {{ doctor.mailId }}</p>
-      <p>Education: {{ doctor.education}}</p>
       <p>Experience: {{ doctor.experience}}</p>
+      <p>Specialization: {{ doctor.specialization }}</p>
       <div class="buttons">
         <button
           class="view-btn-grad"
