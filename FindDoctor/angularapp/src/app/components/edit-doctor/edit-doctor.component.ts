@@ -8,7 +8,9 @@ import { DoctorService } from 'src/app/services/doctor.service';
   styleUrls: ['./edit-doctor.component.css']
 })
 export class EditDoctorComponent implements OnInit {
-  doctor: any = {};
+  doctor: any = {
+    availability: [] 
+  };
   photoImage="";
   constructor(private route: ActivatedRoute, private doctorService: DoctorService, private router: Router) { }
 
@@ -20,15 +22,15 @@ export class EditDoctorComponent implements OnInit {
     this.getDoctorById(doctorId);
   }
 
-  handleCheckboxChange(event: any, availability: string): void {
+  handleCheckboxChange(event: any, availability: string): void {    
     if (event.target.checked) {
       // Add amenity to the array if checked
-      this.doctor.availabilities.push(availability);
+      this.doctor.availability.push(availability);
     } else {
       // Remove amenity from the array if unchecked
-      const index = this.doctor.availabilities.indexOf(availability);
+      const index = this.doctor.availability.indexOf(availability);
       if (index !== -1) {
-        this.doctor.availabilities.splice(index, 1);
+        this.doctor.availability.splice(index, 1);
       }
     }
   }
@@ -49,12 +51,12 @@ export class EditDoctorComponent implements OnInit {
     this.doctor.photo=this.photoImage;
     this.doctorService.updateDoctor(this.doctor).subscribe(
       (response) => {
-        console.log('Vacation Rental updated successfully', response);
+        console.log('Doctor updated successfully', response);
         //navigate to seller dashboard
-        this.router.navigate(['/owner-dashboard']);
+        this.router.navigate(['/admin-dashboard']);
       },
       (error) => {
-        console.error('Error updating mobile', error);
+        console.error('Error updating doctor', error);
       }
     );
  }
