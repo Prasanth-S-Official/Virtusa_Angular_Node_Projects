@@ -43,7 +43,7 @@
         </button>
         <button
           class="edit-btn-grad"
-          (click)="navigateToEditTournament(event); $event.stopPropagation()"
+          (click)="navigateToEditJob(event); $event.stopPropagation()"
         >
           Edit
         </button>
@@ -77,6 +77,7 @@
     <h2>Job Details</h2>
     <div class="image-container">
       <p><strong>Description:</strong> {{ selectedItem.description }}</p>
+      <p><strong>Category:</strong> {{ selectedItem.category }}</p>
       <p><strong>Location:</strong> {{ selectedItem.location }}</p>
       <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'yyyy-MM-dd'}}</p>
       <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'yyyy-MM-dd'}}</p>

@@ -2,7 +2,7 @@
     <div class="sub-container">
         <button class="back-btn" (click)="goBack()">Back</button>
 
-        <h1>Update Tournament</h1>
+        <h1>Update Job</h1>
 
         <form *ngIf="job">
             <div class="form-group">
@@ -17,18 +17,26 @@
             </div>
 
             <div class="form-group">
-                <label for="location">Location:</label>
-                <textarea id="location" name="location" [(ngModel)]="job.location"></textarea>
-            </div>
-
-            <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea [(ngModel)]="job.description" id="description" name="description"></textarea>
             </div>
 
             <div class="form-group">
-                <label for="prize">Prize:</label>
-                <input [(ngModel)]="job.prize" id="prize" name="prize" />
+                <label for="category">Category:</label>
+                <select id="category" name="category" [(ngModel)]="job.category" required>
+                  <option value="">Select</option>
+                  <option *ngFor="let type of categories" [value]="type">
+                    {{ type }}
+                  </option>
+                </select>
+                <div *ngIf="!job.category && touched">
+                  *Category is required.
+                </div>
+              </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input id="location" name="location" [(ngModel)]="job.location">
             </div>
 
             <div class="form-group">
@@ -44,8 +52,8 @@
             </div>
 
             <div class="button-submit">
-                <button type="submit" (click)="updateCricketTournament()">
-                    Update Tournament
+                <button type="submit" (click)="updateJob()">
+                    Update Job
                 </button>
             </div>
         </form>

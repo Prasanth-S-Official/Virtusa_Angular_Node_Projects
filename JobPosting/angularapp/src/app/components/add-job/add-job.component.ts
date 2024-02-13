@@ -95,6 +95,6 @@ export class AddJobComponent {
 
   goBack() {
     // Navigate to the dashboard or any desired route
-    this.route.navigate(['/organiser-dashboard']);
+    this.route.navigate(['/job-poster-dashboard']);
   }
 }

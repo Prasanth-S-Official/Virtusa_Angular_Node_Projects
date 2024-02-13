@@ -12,7 +12,7 @@ export class EditJobComponent implements OnInit {
   photoImage="";
   constructor(private route: ActivatedRoute, private jobService: JobService, private router: Router) { }
 
-  categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
+  categories = ['Teaching and Education', 'Technology and IT', 'Healthcare and Medical', 'Business and Finance', 'Other'];
 
   ngOnInit() {
     const jobId = this.route.snapshot.paramMap.get('id');
