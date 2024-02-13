@@ -12,22 +12,29 @@ import { JobService } from 'src/app/services/job.service';
 export class AddJobComponent {
   jobForm: FormGroup;
   job: Job
-  photoImage="";
+  photoImage = "";
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private jobService: JobService, private route:Router) {
+  constructor(private fb: FormBuilder, private jobService: JobService, private route: Router) {
     this.jobForm = this.fb.group({
-      tournamentName: ['', Validators.required],
-      rules: ['', Validators.required],
-      prize: ['', Validators.required],
+      title: ['', Validators.required],
+      category: ['', Validators.required],
+      location: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      location: ['', Validators.required],
+      description: ['', Validators.required],
       coverImage: [null, Validators.required],
     });
   }
 
-  categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
+  categories = ['Teaching and Education', 'Technology and IT'
+    ,
+    'Healthcare and Medical'
+    ,
+    'Business and Finance'
+    ,
+    'Other'
+  ];
 
   onSubmit() {
     if (this.jobForm.valid) {
@@ -36,12 +43,12 @@ export class AddJobComponent {
       //pass userid from local storage
       // this.jobForm.value.userId=localStorage.getItem('userId');
       this.job = new Job();
-      this.job.tournamentName = this.jobForm.get('tournamentName').value;
-      this.job.rules = this.jobForm.get('rules').value;
-      this.job.prize = this.jobForm.get('prize').value;
+      this.job.title = this.jobForm.get('title').value;
+      this.job.category = this.jobForm.get('category').value;
       this.job.startDate = this.jobForm.get('startDate').value;
       this.job.location = this.jobForm.get('location').value;
       this.job.endDate = this.jobForm.get('endDate').value;
+      this.job.description = this.jobForm.get('description').value;
       this.job.coverImage = this.photoImage;
       this.job.userId = localStorage.getItem('userId');
       this.jobService.addJob(this.job).subscribe(
@@ -56,7 +63,7 @@ export class AddJobComponent {
           console.error('Error adding job', error);
         }
       );
-    }else{
+    } else {
       this.errorMessage = "All fields are required"
     }
   }
@@ -67,7 +74,7 @@ export class AddJobComponent {
     if (file) {
       this.convertFileToBase64(file).then(
         (base64String) => {
-          this.photoImage=base64String
+          this.photoImage = base64String
         },
         (error) => {
           console.error('Error converting file to base64:', error);
