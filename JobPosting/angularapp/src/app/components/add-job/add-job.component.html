@@ -26,7 +26,7 @@
                 <label for="description">Description:</label>
                 <textarea id="description" formControlName="description"></textarea>
                 <div *ngIf="jobForm.get('description').hasError('required') && jobForm.get('description').touched">
-                    *Rules is required.
+                    *Description is required.
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                     <option *ngFor="let type of categories" [value]="type">{{type}}</option>
                 </select>
                 <div *ngIf="jobForm.get('category').hasError('required') && jobForm.get('category').touched">
-                    *Gender is required.
+                    *Category is required.
                 </div>
             </div>
             <div class="form-group">

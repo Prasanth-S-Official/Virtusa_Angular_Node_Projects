@@ -1,1 +1,53 @@
-<p>edit-job works!</p>
+<div class="main-container">
+    <div class="sub-container">
+        <button class="back-btn" (click)="goBack()">Back</button>
+
+        <h1>Update Tournament</h1>
+
+        <form *ngIf="cricketTournament">
+            <div class="form-group">
+                <label for="tournamentName">Tournament Name:</label>
+                <input [(ngModel)]="cricketTournament.tournamentName" id="tournamentName" name="tournamentName" />
+            </div>
+
+            <div class="form-group">
+                <label for="coverImage">Cover Image:</label>
+                <input type="file" id="coverImage" name="coverImage" (change)="handleFileChange($event)"
+                    accept=".png, .jpg" />
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <textarea id="location" name="location" [(ngModel)]="cricketTournament.location"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="rules">Rules:</label>
+                <textarea [(ngModel)]="cricketTournament.rules" id="rules" name="rules"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="prize">Prize:</label>
+                <input [(ngModel)]="cricketTournament.prize" id="prize" name="prize" />
+            </div>
+
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" [value]="cricketTournament.startDate"
+                    [(ngModel)]="cricketTournament.startDate" />
+            </div>
+
+            <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" [value]="cricketTournament.endDate"
+                    [(ngModel)]="cricketTournament.endDate" />
+            </div>
+
+            <div class="button-submit">
+                <button type="submit" (click)="updateCricketTournament()">
+                    Update Tournament
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

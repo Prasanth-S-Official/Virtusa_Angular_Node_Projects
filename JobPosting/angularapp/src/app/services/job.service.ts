@@ -22,12 +22,12 @@ export class JobService {
   }
 
   updateJob(jobData: any): Observable<any> {
-    const id = jobData.tournamentId;
+    const id = jobData.jobId;
     return this.http.put(`${this.apiUrl}/api/job/${id}`, jobData);
   }
 
   deleteJob(jobData: any): Observable<any> {
-    const id = jobData.tournamentId;
+    const id = jobData.jobId;
     return this.http.delete(`${this.apiUrl}/api/job/${id}`);
   }
 

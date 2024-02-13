@@ -27,14 +27,7 @@ export class AddJobComponent {
     });
   }
 
-  categories = ['Teaching and Education', 'Technology and IT'
-    ,
-    'Healthcare and Medical'
-    ,
-    'Business and Finance'
-    ,
-    'Other'
-  ];
+  categories = ['Teaching and Education', 'Technology and IT', 'Healthcare and Medical', 'Business and Finance', 'Other'];
 
   onSubmit() {
     if (this.jobForm.valid) {
