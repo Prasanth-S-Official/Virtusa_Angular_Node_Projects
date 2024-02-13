@@ -1,0 +1,79 @@
+<div class="main-container">
+    <div class="sub-container">
+<button class="back-btn" (click)="goBack()">Back</button>
+
+<h1>Create New Tournament</h1>
+
+<form [formGroup]="cricketTournamentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="tournamentName">Tournament Name:</label>
+      <input type="text" id="tournamentName" formControlName="tournamentName">
+      <div *ngIf="cricketTournamentForm.get('tournamentName').hasError('required') && cricketTournamentForm.get('tournamentName').touched">
+        *Title is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="coverImage">Cover Image:</label>
+        <input type="file" id="coverImage" formControlName="coverImage" (change)="handleFileChange($event)" accept=".png, .jpg">
+        <div *ngIf="cricketTournamentForm.get('coverImage').hasError('required') && cricketTournamentForm.get('coverImage').touched">
+            *Cover Image is required.
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" formControlName="location">
+        <div *ngIf="cricketTournamentForm.get('location').hasError('required') && cricketTournamentForm.get('location').touched">
+            *Location is required.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rules">Rules:</label>
+        <textarea id="rules" formControlName="rules"></textarea>
+        <div *ngIf="cricketTournamentForm.get('rules').hasError('required') && cricketTournamentForm.get('rules').touched">
+         *Rules is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="prize">Prize:</label>
+        <input id="prize" formControlName="prize">
+        <div *ngIf="cricketTournamentForm.get('prize').hasError('required') && cricketTournamentForm.get('prize').touched">
+         *Prize is required.
+        </div>
+      </div>
+
+    
+
+
+    <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" formControlName="startDate">
+        <div *ngIf="cricketTournamentForm.get('startDate').hasError('required') && cricketTournamentForm.get('startDate').touched">
+            *Start Date is required.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" formControlName="endDate">
+        <div *ngIf="cricketTournamentForm.get('endDate').hasError('required') && cricketTournamentForm.get('endDate').touched">
+            *Start Date is required.
+        </div>
+    </div>
+
+  <div class="button-submit">
+    <button class="button-submit" type="submit" >Create Tournament</button>
+  </div>
+    <div *ngIf="errorMessage" class="error-message">
+      *{{ errorMessage }}
+    </div>
+
+    
+  </form>
+  
+  </div>
+</div>

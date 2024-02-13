@@ -10,7 +10,6 @@ import { CricketTournament } from 'src/app/models/crickettournament.model';
   styleUrls: ['./add-tournament.component.css']
 })
 export class AddTournamentComponent {
-
   cricketTournamentForm: FormGroup;
   cricketTournament: CricketTournament
   photoImage="";
@@ -18,7 +17,7 @@ export class AddTournamentComponent {
 
   constructor(private fb: FormBuilder, private cricketTournamentService: CrickettournamentService, private route:Router) {
     this.cricketTournamentForm = this.fb.group({
-      tournamentName: ['', Validators.required],
+      title: ['', Validators.required],
       rules: ['', Validators.required],
       prize: ['', Validators.required],
       startDate: ['', Validators.required],

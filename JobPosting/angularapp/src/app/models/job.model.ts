@@ -1,5 +1,5 @@
 export class Job {
-    jobId: string;
+    jobId?: string;
     userId: string;
     title: string;
     category: string;

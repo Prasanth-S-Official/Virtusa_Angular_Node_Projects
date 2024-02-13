@@ -9,8 +9,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { PosterDashboardComponent } from './components/poster-dashboard/poster-dashboard.component';
 import { SeekerDashboardComponent } from './components/seeker-dashboard/seeker-dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddJobComponent } from './add-job/add-job.component';
-import { EditJobComponent } from './edit-job/edit-job.component';
+import { AddJobComponent } from './components/add-job/add-job.component';
+import { EditJobComponent } from './components/edit-job/edit-job.component';
 
 @NgModule({
   declarations: [
