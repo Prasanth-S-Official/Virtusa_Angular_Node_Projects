@@ -1,1 +1,87 @@
-<p>poster-dashboard works!</p>
+<div
+  id="eventHomeBody"
+  [ngClass]="{ blur: showDeletePopup || showLogoutPopup }"
+>
+  <!-- <div class="main-head"> -->
+  <div class="top-head">
+    <button class="add-btn-grad" (click)="navigateToAddTournament()">
+      Add Tournament
+    </button>
+    <button class="logout-btn-grad" (click)="showLogoutPopup = true">
+      Logout
+    </button>
+  </div>
+  <h1>My Tournaments</h1>
+
+  <!-- </div> -->
+  <div class="search-sort-container">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (input)="searchCricketTournamentsByUserId()"
+      placeholder="Search by tournament name..."
+    />
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item" *ngFor="let event of cricketTournaments">
+      <img src="{{ event.coverImage }}" alt="Book Image" class="vacationRental-image" />
+      <div (click)="viewInfo(event)">
+      <h2>{{ event.tournamentName }}</h2>
+      <p>{{ event.rules }}</p>
+      <p>Start Date: {{ event.startDate | date:'yyyy-MM-dd'}}</p>
+    </div>
+      <div class="buttons">
+        <button
+          class="delete-btn-grad btn-danger"
+          (click)="
+            showDeletePopup = true;
+            selectedCricketTournament = event;
+            $event.stopPropagation()
+          "
+        >
+          Delete
+        </button>
+        <button
+          class="edit-btn-grad"
+          (click)="navigateToEditTournament(event); $event.stopPropagation()"
+        >
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showDeletePopup" class="delete-popup">
+  <p>Are you sure you want to delete?</p>
+  <button
+    (click)="deleteCricketTournament(selectedCricketTournament); showDeletePopup = false"
+    id="delete-btn"
+  >
+    Yes, Delete
+  </button>
+  <button (click)="showDeletePopup = false">Cancel</button>
+</div>
+
+<div *ngIf="showLogoutPopup" class="logout-popup">
+  <p>Are you sure you want to logout?</p>
+  <button (click)="logout(); showLogoutPopup = false" id="logout-btn">
+    Yes, Logout
+  </button>
+  <button (click)="showLogoutPopup = false">Cancel</button>
+</div>
+
+<div class="modal" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
+  <div class="modal-content">
+    <span class="close" (click)="toggleModal()">&times;</span>
+    <h2><strong>{{ selectedItem.tournamentName }}</strong> Details</h2>
+    <div class="image-container">
+      <p><strong>Rules:</strong> {{ selectedItem.rules }}</p>
+      <p><strong>Prize:</strong> {{ selectedItem.prize }}</p>
+      <p><strong>Location:</strong> {{ selectedItem.location }}</p>
+      <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'yyyy-MM-dd'}}</p>
+      <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'yyyy-MM-dd'}}</p>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,6 @@ import { CrickettournamentService } from 'src/app/services/crickettournament.ser
   styleUrls: ['./organiser-dashboard.component.css']
 })
 export class OrganiserDashboardComponent implements OnInit {
-
   showDeletePopup = false;
   selectedCricketTournament: CricketTournament;
   showLogoutPopup = false;
