@@ -9,6 +9,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { PosterDashboardComponent } from './components/poster-dashboard/poster-dashboard.component';
 import { SeekerDashboardComponent } from './components/seeker-dashboard/seeker-dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddJobComponent } from './add-job/add-job.component';
+import { EditJobComponent } from './edit-job/edit-job.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegistrationComponent,
     PosterDashboardComponent,
-    SeekerDashboardComponent
+    SeekerDashboardComponent,
+    AddJobComponent,
+    EditJobComponent
   ],
   imports: [
     BrowserModule,

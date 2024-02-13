@@ -20,8 +20,8 @@ export class PosterDashboardComponent implements OnInit {
     private jobService: JobService
   ) {}
 
-  navigateToAddTournament() {
-    this.router.navigate(['/post-job']);
+  navigateToAddJob() {
+    this.router.navigate(['/add-job']);
   }
   logout() {
     // Perform logout logic here

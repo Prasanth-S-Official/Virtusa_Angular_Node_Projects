@@ -4,27 +4,27 @@
 >
   <!-- <div class="main-head"> -->
   <div class="top-head">
-    <button class="add-btn-grad" (click)="navigateToAddTournament()">
-      Add Tournament
+    <button class="add-btn-grad" (click)="navigateToAddJob()">
+      Add Job
     </button>
     <button class="logout-btn-grad" (click)="showLogoutPopup = true">
       Logout
     </button>
   </div>
-  <h1>My Tournaments</h1>
+  <h1>My Jobs</h1>
 
   <!-- </div> -->
   <div class="search-sort-container">
     <input
       type="text"
       [(ngModel)]="searchText"
-      (input)="searchCricketTournamentsByUserId()"
-      placeholder="Search by tournament name..."
+      (input)="searchJobsByUserId()"
+      placeholder="Search by job title..."
     />
   </div>
 
   <div class="grid-container">
-    <div class="grid-item" *ngFor="let event of cricketTournaments">
+    <div class="grid-item" *ngFor="let event of jobs">
       <img src="{{ event.coverImage }}" alt="Book Image" class="vacationRental-image" />
       <div (click)="viewInfo(event)">
       <h2>{{ event.tournamentName }}</h2>
@@ -36,7 +36,7 @@
           class="delete-btn-grad btn-danger"
           (click)="
             showDeletePopup = true;
-            selectedCricketTournament = event;
+            selectedJob = event;
             $event.stopPropagation()
           "
         >
@@ -56,7 +56,7 @@
 <div *ngIf="showDeletePopup" class="delete-popup">
   <p>Are you sure you want to delete?</p>
   <button
-    (click)="deleteCricketTournament(selectedCricketTournament); showDeletePopup = false"
+    (click)="deleteJob(selectedJob); showDeletePopup = false"
     id="delete-btn"
   >
     Yes, Delete
